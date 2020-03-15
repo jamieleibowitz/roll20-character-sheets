@@ -1,0 +1,18 @@
+{
+  "arcanist-title": "Arcanist",
+  "arcanist-description": "Disciplined students of arcane magic, who hone their talents for years before graduating to the cockpit of an Astir.",
+  "impostor-title": "Impostor",
+  "impostor-description": "Some change themselves so that they can step into an Astir. Some step into an Astir so that they can change themselves.",
+  "paradigm-title": "Paradigm",
+  "paradigm-description": "Adherents of the gods who channel divine power into an Astir to control it. The devout know to respect their tenets, lest their Astir fail beneath them.",
+  "witch-title": "Witch",
+  "witch-description": "Witches seize power through pacts with powerful creatures, knowingly or otherwise. This power fuels and binds a Astir as well as any other, but its sources can be demanding… and mischievous.",
+  "scout-title": "Scout",
+  "scout-description": "Scouts are straightforward people. Trained in navigating any terrain and pathfinding for less mobile troops, scouts are often the eyes and ears for their Astir allies.",
+  "captain-title": "Captain",
+  "captain-description": "Even the best of teams need guidance. Overlooking sorties from the Carrier’s helm, the Captain commands the crew and ensures those in the field get the help they need.",
+  "artificer-title": "Artificer",
+  "artificer-description": "Between necessary repairs and wholly unnecessary tinkering, Artificers do their best to keep their allies equipped and their Astirs functioning.",
+  "diplomat-title": "Diplomat",
+  "diplomat-description": "Not every war is fought with weapons. For a Diplomat, the battlefield is a boardroom, the landmines are a host’s hospitality and the only weapon you need is a winning smile."
+}
