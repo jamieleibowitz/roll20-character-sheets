@@ -47,7 +47,6 @@
     padding: 0;
     display: flex;
     width: auto;
-    color: #333;
     font: inherit;
 }
 
@@ -178,26 +177,39 @@
 
 .sheet-game-title {
   background-color: rgba(129, 228, 253, 0.829);
-  border-style: solid;
   padding: 5px;
+  border-radius: 5px;
 }
 
 .sheet-game-title h1 {
   font-family: 'Roboto', sans-serif;
   font-size: 48px;
-  border: none;
 }
 
+input[type="radio"]:checked+label {
+  color: red;
+}
+
+.sheet-game-select-button {
+  width: 60px;
+  height: 60px;
+  display: none
+}
+
+.sheet-game-select-label {
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  margin: 0px 5px 0px 5px;
+  text-align: center;
+  text-justify: center;
+}
 
 .sheet-game-select-box {
   font-size: 12px;
   width: 120px;
   height: 50px;
   display: flex;
-  flex-direction: column;
-}
-
-.sheet-game-select-option-box {
   display: flex;
   flex-direction: row;
 }
@@ -216,6 +228,14 @@
   height: 50px;
 }
 
+.sheet-game_type:not([value="advent"]) ~ .sheet-type-advent,
+.sheet-game_type:not([value="advent"]) ~ div .sheet-type-advent,
+.sheet-game_type:not([value="advent"]) ~ select .sheet-type-advent,
+.sheet-game_type:not([value="ascent"]) ~ .sheet-type-ascent,
+.sheet-game_type:not([value="ascent"]) ~ div .sheet-type-ascent,
+.sheet-game_type:not([value="ascent"]) ~ select .sheet-type-ascent {
+  display: none;
+}
 /* SETTINGS */
 
 .sheet-type[value="character"]~.sheet-settings> :not(.sheet-setting-char) {
