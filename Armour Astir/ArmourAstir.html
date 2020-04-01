@@ -4,26 +4,10 @@
 <input class="use-kirsty" type="hidden" name="attr_setting_usekirsty" value="0"/>
 <input class="flexwidth" type="hidden" name="attr_setting_flexwidth" value="0"/>
 <input type="hidden" name="attr_changed_attributes" value=""/>
-<input type="hidden" name="attr_bonusdice" value="Bonus dice"/>
-<input type="hidden" name="attr_numberofdice" value=" {{?{Number of dice|0,zerodice=[[d6]]&amp;#44; [[d6]]|1,dice=[[d6]]|2,dice=[[d6]]&amp;#44; [[d6]]|3,dice=[[d6]]&amp;#44; [[d6]]&amp;#44; [[d6]]|4,dice=[[d6]]&amp;#44; [[d6]]&amp;#44; [[d6]]&amp;#44; [[d6]]|5,dice=[[d6]]&amp;#44; [[d6]]&amp;#44; [[d6]]&amp;#44; [[d6]]&amp;#44; [[d6]]|6,dice=[[d6]]&amp;#44; [[d6]]&amp;#44; [[d6]]&amp;#44; [[d6]]&amp;#44; [[d6]]&amp;#44; [[d6]]}}}"/>
-<input type="hidden" name="attr_notes_query" value="?{Notes}"/>
-<input type="hidden" name="attr_position_query" value="?{Position|Risky,position=Risky|Controlled,position=Controlled|Desperate,position=Desperate|Fortune roll,position=}"/>
-<input type="hidden" name="attr_effect_query" value="?{Effect|Standard|Limited|Great|Extreme|Zero}"/>
-<input type="hidden" name="attr_consequence_query" value="^{a_consequence}"/>
-<input type="hidden" name="attr_stress_max" value="9"/>
-<input type="hidden" name="attr_trauma_max" value="4"/>
-<input type="hidden" name="attr_coin_max" value="4"/>
-<input type="hidden" name="attr_stash_max" value="40"/>
-<input type="hidden" name="attr_playbook_xp_max" value="8"/>
-<input type="hidden" name="attr_rep_max" value="12"/>
-<input type="hidden" name="attr_turf_max" value="6"/>
-<input type="hidden" name="attr_crew_tier_max" value="4"/>
-<input type="hidden" name="attr_heat_max" value="9"/>
-<input type="hidden" name="attr_wanted_max" value="4"/>
-<input type="hidden" name="attr_crewcoin_max" value="16"/>
-<input type="hidden" name="attr_crew_xp_max" value="8"/>
+<input type="hidden" name="attr_rolltype" value="2d6">
 <div class="container">
   <input class="game_type" type="hidden" name="attr_game_type" value="advent"/>
+  <input class="playbook-selection" type="hidden" name="attr_playbook-dropdown" value=""/>
   <!-- Character Sheet-->
   <div class="col100 flex-wrap playbook header generaterow">
     <div class="game-select-box">
@@ -39,93 +23,239 @@
     </div>
     <div class="playbook-selector-box">
       <h3 class="playbook-label" data-i18n="playbook-label"></h3>
-      <select name="playbook-dropdown" title="Select playbook">
+      <select name="attr_playbook-dropdown" title="Select playbook">
         <option value="" data-i18n="playbook-default" selected></option>
         <option class="type-advent" value="channelers" data-i18n="channelers" disabled></option>
         <option class="type-ascent" value="aces" data-i18n="aces" disabled></option>
-        <option class="type-advent" value="arcanist" data-i18n="arcanist"></option>
-        <option class="type-ascent" value="tactician" data-i18n="tactician"></option>
-        <option class="type-advent" value="impostor" data-i18n="impostor"></option>
-        <option class="type-ascent" value="aligned" data-i18n="aligned"></option>
-        <option class="type-advent" value="paradigm" data-i18n="paradigm"></option>
-        <option class="type-ascent" value="haunted" data-i18n="haunted"></option>
-        <option class="type-advent" value="witch" data-i18n="witch"></option>
-        <option class="type-ascent" value="leashed" data-i18n="leashed"></option>
+        <option class="type-advent" value="channeler-arcanist" data-i18n="arcanist"></option>
+        <option class="type-ascent" value="ace-tactician" data-i18n="tactician"></option>
+        <option class="type-advent" value="channeler-impostor" data-i18n="impostor"></option>
+        <option class="type-ascent" value="ace-aligned" data-i18n="aligned"></option>
+        <option class="type-advent" value="channeler-paradigm" data-i18n="paradigm"></option>
+        <option class="type-ascent" value="ace-haunted" data-i18n="haunted"></option>
+        <option class="type-advent" value="channeler-witch" data-i18n="witch"></option>
+        <option class="type-ascent" value="ace-leashed" data-i18n="leashed"></option>
         <option value="support" data-i18n="support" disabled></option>
-        <option value="scout" data-i18n="scout"></option>
-        <option value="captain" data-i18n="captain"></option>
-        <option class="type-advent" value="artificer" data-i18n="artificer"></option>
-        <option class="type-ascent" value="engineer" data-i18n="engineer"></option>
-        <option value="diplomat" data-i18n="diplomat"></option>
+        <option value="support-scout" data-i18n="scout"></option>
+        <option value="support-captain" data-i18n="captain"></option>
+        <option class="type-advent" value="support-artificer" data-i18n="artificer"></option>
+        <option class="type-ascent" value="support-engineer" data-i18n="engineer"></option>
+        <option value="support-diplomat" data-i18n="diplomat"></option>
         <option value="other" data-i18n="other-playbooks" disabled></option>
-        <option value="custom" data-i18n="custom-playbook"></option>
+        <option class="type-advent" value="channeler-custom" data-i18n="channeler-custom-playbook"></option>
+        <option class="type-ascent" value="ace-custom" data-i18n="ace-custom-playbook"></option>
+        <option value="support-custom" data-i18n="support-custom-playbook"></option>
       </select>
     </div>
+    <div class="playbook-title-block">
+      <input class="playbook-selection" type="hidden" name="attr_playbook-dropdown" value=""/>
+      <span class="playbook-title arcanist-text" data-i18n="arcanist"></span>
+      <span class="playbook-title tactician-text" data-i18n="tactician"></span>
+      <span class="playbook-title impostor-text" data-i18n="impostor"></span>
+      <span class="playbook-title aligned-text" data-i18n="aligned"></span>
+      <span class="playbook-title paradigm-text" data-i18n="paradigm"></span>
+      <span class="playbook-title haunted-text" data-i18n="haunted"></span>
+      <span class="playbook-title witch-text" data-i18n="witch"></span>
+      <span class="playbook-title leashed-text" data-i18n="leashed"></span>
+      <span class="playbook-title scout-text" data-i18n="scout"></span>
+      <span class="playbook-title captain-text" data-i18n="captain"></span>
+      <span class="playbook-title artificer-text" data-i18n="artificer"></span>
+      <span class="playbook-title engineer-text" data-i18n="engineer"></span>
+      <span class="playbook-title diplomat-text" data-i18n="diplomat"></span>
+      <input type="text" class="playbook-title custom-text custom-class-name" placeholder="Custom..." />
+    </div>
   </div>
+  <!-- Debugging Indicators -->
   <span class="type-advent">Advent</span>
   <span class="type-ascent">Ascent</span>
+  <span class="type-advent channeler-text">Channeler</span>
+  <span class="type-advent channeler-text arcanist-text">Arcanist</span>
+  <span class="type-advent channeler-text impostor-text">Impostor</span>
+  <span class="type-advent channeler-text paradigm-text">Paradigm</span>
+  <span class="type-advent channeler-text witch-text">Witch</span>
+  <span class="type-ascent ace-text">Ace</span>
+  <span class="type-ascent ace-text tactician-text">Tactician</span>
+  <span class="type-ascent ace-text aligned-text">Aligned</span>
+  <span class="type-ascent ace-text haunted-text">Haunted</span>
+  <span class="type-ascent ace-text leashed-text">Leashed</span>
+  <span class="support-text">Support</span>
+  <span class="support-text scout-text">Scout</span>
+  <span class="support-text captain-text">Captain</span>
+  <span class="type-advent support-text artificer-text">Artificer</span>
+  <span class="type-ascent support-text engineer-text">Engineer</span>
+  <span class="support-text diplomat-text">Diplomat</span>
+  <span class="custom-text">Custom</span>
   <div class="type-character flex">
     <!-- Left column-->
     <div class="col55 flex-wrap">
       <!-- Header text fields-->
       <div class="col100 header flex">
-        <label class="col55">
+        <label class="col100">
           <input type="text" spellcheck="false" name="attr_name"/>
-          <div class="label text title" data-i18n="name"></div>
-        </label>
-        <label class="col45">
-          <input type="text" spellcheck="false" name="attr_alias"/>
-          <div class="label text title" data-i18n="alias"></div>
+          <div class="label text" data-i18n="name"></div>
         </label>
         <label class="col100">
-          <input type="text" spellcheck="false" name="attr_look"/>
-          <div class="label text title" data-i18n="look"></div>
+          <input class="ideal" type="text" spellcheck="false" name="attr_ideal1"/>
+          <div class="label text" data-i18n="ideal1"></div>
+          <input class="ideal" type="text" spellcheck="false" name="attr_ideal2"/>
+          <div class="label text" data-i18n="ideal2"></div>
+          <input class="ideal" type="text" spellcheck="false" name="attr_ideal3"/>
+          <div class="label text" data-i18n="ideal3"></div>
         </label>
       </div>
-      <!-- Advancement-->
-      <div class="col100 def-margin">
-        <div class="advancement-header flex blackheader">
-          <div class="label markxp" data-i18n="mark_xp:"></div>
-          <div class="label" data-i18n="playbook_advancement"></div>
-          <div class="xpholder flex">
-            <input class="tooth zero" type="radio" name="attr_playbook_xp" value="0" checked="checked"/><span></span>
-            <input class="tooth xptooth" type="radio" name="attr_playbook_xp" value="1"/><span></span>
-            <input class="tooth xptooth" type="radio" name="attr_playbook_xp" value="2"/><span></span>
-            <input class="tooth xptooth" type="radio" name="attr_playbook_xp" value="3"/><span></span>
-            <input class="tooth xptooth" type="radio" name="attr_playbook_xp" value="4"/><span></span>
-            <input class="tooth xptooth" type="radio" name="attr_playbook_xp" value="5"/><span></span>
-            <input class="tooth xptooth" type="radio" name="attr_playbook_xp" value="6"/><span></span>
-            <input class="tooth xptooth" type="radio" name="attr_playbook_xp" value="7"/><span></span>
-            <input class="tooth xptooth" type="radio" name="attr_playbook_xp" value="8"/><span></span>
-          </div>
+    </div>
+    <div class="col45 flex-wrap">
+      <!-- On-foot fighting style -->
+      <span data-i18n="foot-fighting-style"></span>
+      <div class="foot-fighting-style type-advent">
+        <div class="fight-style-block">
+          <input id="fight-style-mundane" id="fight-style-mundane" class="fight-style-button" type="radio" name="attr_fight_style" value="mundane"/>
+          <label for="fight-style-mundane" class="fight-style-label" data-i18n="mundane"></label>
         </div>
-        <ul class="advancement-desc">
-          <li data-i18n="xp_desperate"></li>
-          <li class="nondot" data-i18n="xp_top"></li>
-          <li>
-            <div class="auto-expand"><span name="attr_xp_condition"></span>
-              <textarea spellcheck="false" name="attr_xp_condition" data-i18n-placeholder="xp_specific"></textarea>
-            </div>
-          </li>
-          <input class="hider" type="hidden" name="attr_setting_extra_xp" value="0"/>
-          <li>
-            <div class="auto-expand"><span name="attr_xp_condition_extra"></span>
-              <textarea spellcheck="false" name="attr_xp_condition_extra" data-i18n-placeholder="xp_specific_extra"></textarea>
-            </div>
-          </li>
-          <li>
-            <div class="auto-expand"><span name="attr_xp_condition2">You expressed your beliefs, drives, heritage, or background.</span>
-              <textarea spellcheck="false" name="attr_xp_condition2">You expressed your beliefs, drives, heritage, or background.</textarea>
-            </div>
-          </li>
-          <li>
-            <div class="auto-expand"><span name="attr_xp_condition3">You struggled with issues from your vice or traumas during the session.</span>
-              <textarea spellcheck="false" name="attr_xp_condition3">You struggled with issues from your vice or traumas during the session.</textarea>
-            </div>
-          </li>
-        </ul>
+        <div class="fight-style-block">
+          <input id="fight-style-arcane" class="fight-style-button" type="radio" name="attr_fight_style" value="arcane"/>
+          <label for="fight-style-arcane" class="fight-style-label" data-i18n="arcane"></label>
+        </div>
+        <div class="fight-style-block">
+          <input id="fight-style-divine" class="fight-style-button" type="radio" name="attr_fight_style" value="divine"/>
+          <label for="fight-style-divine" class="fight-style-label" data-i18n="divine"></label>
+        </div>
+        <div class="fight-style-block">
+          <input id="fight-style-profane" class="fight-style-button" type="radio" name="attr_fight_style" value="profane"/>
+          <label for="fight-style-profane" class="fight-style-label" data-i18n="profane"></label>
+        </div>
+        <div class="fight-style-block">
+          <input id="fight-style-elemental" class="fight-style-button" type="radio" name="attr_fight_style" value="elemental"/>
+          <label for="fight-style-elemental" class="fight-style-label" data-i18n="elemental"></label>
+        </div>
+      </div>
+      <div class="foot-fighting-style type-ascent">
+        <div class="fight-style-block">
+          <input id="fight-style-practical" class="fight-style-button" type="radio" name="attr_fight_style" value="practical"/>
+          <label for="fight-style-practical" class="fight-style-label" data-i18n="practical"></label>
+        </div>
+        <div class="fight-style-block">
+          <input id="fight-style-strategic" class="fight-style-button" type="radio" name="attr_fight_style" value="strategic"/>
+          <label for="fight-style-strategic" class="fight-style-label" data-i18n="strategic"></label>
+        </div>
+        <div class="fight-style-block">
+          <input id="fight-style-righteous" class="fight-style-button" type="radio" name="attr_fight_style" value="righteous"/>
+          <label for="fight-style-righteous" class="fight-style-label" data-i18n="righteous"></label>
+        </div>
+        <div class="fight-style-block">
+          <input id="fight-style-wild" class="fight-style-button" type="radio" name="attr_fight_style" value="wild"/>
+          <label for="fight-style-wild" class="fight-style-label" data-i18n="wild"></label>
+        </div>
+        <div class="fight-style-block">
+          <input id="fight-style-intuitive" class="fight-style-button" type="radio" name="attr_fight_style" value="intuitive"/>
+          <label for="fight-style-intuitive" class="fight-style-label" data-i18n="intuitive"></label>
+        </div>
+      </div>
+      <!-- Stat block -->
+      <div class="col100 flex stat-section">
+        <input class="game_type" type="hidden" name="attr_game_type" value="advent"/>
+        <input class="playbook-selection" type="hidden" name="attr_playbook-dropdown" value=""/>
+        <div class="stat-block">
+          <input type="number" name="attr_defy" class="stats" min="-3" max="3" value="0"/>
+          <button type="roll" class="stat-button" name="roll_defy" value="/roll @{rolltype} + @{defy}">
+            <span data-i18n="defy"></span>
+          </button>
+        </div>
+        <div class="stat-block">
+          <input type="number" name="attr_sense" class="stats" min="-3" max="3" value="0"/>
+          <button type="roll" class="stat-button" name="roll_sense" value="/roll @{rolltype} + @{sense}">
+            <span data-i18n="sense"></span>
+          </button>
+        </div>
+        <div class="stat-block">
+          <input type="number" name="attr_know" class="stats" min="-3" max="3" value="0"/>
+          <button type="roll" class="stat-button" name="roll_know" value="/roll @{rolltype} + @{know}">
+            <span data-i18n="know"></span>
+          </button>
+        </div>
+        <div class="stat-block">
+          <input type="number" name="attr_clash" class="stats" min="-3" max="3" value="0"/>
+          <button type="roll" class="stat-button" name="roll_clash" value="/roll @{rolltype} + @{clash}">
+            <span data-i18n="clash"></span>
+          </button>
+        </div>
+        <div class="stat-block">
+          <input type="number" name="attr_talk" class="stats" min="-3" max="3" value="0"/>
+          <button type="roll" class="stat-button" name="roll_talk" value="/roll @{rolltype} + @{talk}">
+            <span data-i18n="talk"></span>
+          </button>
+        </div>
+        <div class="stat-block type-advent channeler-text">
+          <input type="number" name="attr_channel" class="stats" min="-3" max="3" value="0"/>
+          <button type="roll" class="stat-button" name="roll_channel" value="/roll @{rolltype} + @{channel}">
+            <span data-i18n="channel"></span>
+          </button>
+        </div>
+        <div class="stat-block type-ascent ace-text">
+          <input type="number" name="attr_zeal" class="stats" min="-3" max="3" value="0"/>
+          <button type="roll" class="stat-button" name="roll_zeal" value="/roll @{rolltype} + @{zeal}">
+            <span data-i18n="zeal"></span>
+          </button>
+        </div>
+      </div>
+      <div class="col100 flex charstyle-section">
+        <input class="playbook-selection" type="hidden" name="attr_playbook-dropdown" value=""/>
+        <div class="style-block style-look">
+          <span class="style-label" data-i18n="you-look"></span>
+          <div class="style-field"><input type="text" name="attr_look"/></div>
+        </div>
+        <div class="style-block style-wear">
+          <span class="style-label" data-i18n="you-wear"></span>
+          <div class="style-field"><input type="text" name="attr_clothes"/></div>
+        </div>
+        <div class="channeler-text style-block style-magic">
+          <span class="style-label" data-i18n="your-magic-is-like"></span>
+          <div class="style-field"><input type="text" name="attr_magic_style"/></div>
+        </div>
+        <div class="tactician-text style-block style-tactic-style">
+          <span class="style-label" data-i18n="your-style-is"></span>
+          <div class="style-field"><input type="text" name="attr_tactic_style"/></div>
+        </div>
+        <div class="aligned-text style-block style-augments">
+          <span class="style-label" data-i18n="your-augments-are"></span>
+          <div class="style-field"><input type="text" name="attr_augment_style"/></div>
+        </div>
+        <div class="haunted-text style-block style-aura">
+          <span class="style-label" data-i18n="your-aura-is"></span>
+          <div class="style-field"><input type="text" name="attr_aura_style"/></div>
+        </div>
+        <div class="leashed-text style-block style-marks">
+          <span class="style-label" data-i18n="you-are-marked-by"></span>
+          <div class="style-field"><input type="text" name="attr_marks_style"/></div>
+        </div>
+        <div class="scout-text style-block style-fight-with">
+          <span class="style-label" data-i18n="you-fight-with"></span>
+          <div class="style-field"><input type="text" name="attr_fight_with"/></div>
+        </div>
+        <div class="captain-text style-block style-lead">
+          <span class="style-label" data-i18n="you-lead-with"></span>
+          <div class="style-field"><input type="text" name="attr_lead_style"/></div>
+        </div>
+        <div class="artificer-text style-block style-handiwork">
+          <span class="style-label" data-i18n="your-handiwork-looks"></span>
+          <div class="style-field"><input type="text" name="attr_handiwork_style"/></div>
+        </div>
+        <div class="engineer-text style-block style-handiwork">
+          <span class="style-label" data-i18n="your-handiwork-looks"></span>
+          <div class="style-field"><input type="text" name="attr_handiwork_style"/></div>
+        </div>
+        <div class="diplomat-text style-block style-reputation">
+          <span class="style-label" data-i18n="you-have-a-reputation-for-being"></span>
+          <div class="style-field"><input type="text" name="attr_reputation_style"/></div>
+        </div>
+        <div class="custom-text style-block style-third-trait">
+          <span class="style-label" data-i18n="custom-third-trait"></span>
+          <div class="style-field"><input type="text" name="attr_3rd_trait_style"/></div>
+        </div>
       </div>
     </div>
+  </div>
+  <div>
     <!-- Right column-->
     <div class="col45 flex-wrap right-column">
       <!-- Clocks-->
@@ -188,40 +318,6 @@
     </div>
   </div>
 </div>
-<rolltemplate class="sheet-rolltemplate-bitd">
-  <div class="holder{{#action}} action{{/action}}{{#resist}} resist{{/resist}}{{#vice}} vice{{/vice}}{{#fortune}} fortune{{/fortune}}{{#short}} short{{/short}}{{#action}}{{^position}} short{{/position}}{{/action}}">{{#charimage}}
-    <div class="char-image">[Image]({{charimage}})</div>{{/charimage}}
-    <div class="header{{#charimage}} narrow{{/charimage}}">{{charname}} {{subtitle}}</div>
-    <div class="title"><span class="{{#small-title}}small-title{{/small-title}}">{{title}}</span></div>
-    <div class="dice">{{^zerodice}}{{dice}}{{/zerodice}}{{#zerodice}}
-      <div class="zerodice1">{{zerodice}}</div>
-      <div class="zerodice2" data-i18n="zerodice"></div>{{/zerodice}}
-    </div>{{#position}}
-    <div class="position">{{position}}</div>{{/position}}{{#effect}}
-    <div class="effect">{{effect}}</div>{{/effect}}{{#resist}}{{^short}}
-    <div class="instructions" data-i18n="resist_instructions"></div>{{/short}}{{/resist}}{{#vice}}{{^short}}
-    <div class="instructions" data-i18n="vice_instructions"></div>{{/short}}{{/vice}}{{#notes}}
-    <div class="notes">{{notes}}</div>{{/notes}}
-    <!-- Healing clock-->
-    <input class="size" type="hidden" name="attr_recovery_max" value="8"/>
-    <div class="clock-container">
-      <div class="spoke-0 all"></div>
-      <div class="spoke-45 all"></div>
-      <div class="spoke-90 all"></div>
-      <div class="spoke-135 all"></div>
-      <input class="zero input-progress" type="radio" name="attr_recovery" value="0" checked="checked"/><span></span>
-      <input class="input-progress all" type="radio" name="attr_recovery" value="1" data-i18n-title="recoveryblurb"/>
-      <input class="input-progress all" type="radio" name="attr_recovery" value="2" data-i18n-title="recoveryblurb"/>
-      <input class="input-progress all" type="radio" name="attr_recovery" value="3" data-i18n-title="recoveryblurb"/>
-      <input class="input-progress all" type="radio" name="attr_recovery" value="4" data-i18n-title="recoveryblurb"/>
-      <input class="input-progress all" type="radio" name="attr_recovery" value="5" data-i18n-title="recoveryblurb"/>
-      <input class="input-progress all" type="radio" name="attr_recovery" value="6" data-i18n-title="recoveryblurb"/>
-      <input class="input-progress all" type="radio" name="attr_recovery" value="7" data-i18n-title="recoveryblurb"/>
-      <input class="input-progress all" type="radio" name="attr_recovery" value="8" data-i18n-title="recoveryblurb"/>
-      <div class="clock"></div>
-    </div>
-  </div>
-</rolltemplate>
 <rolltemplate class="sheet-rolltemplate-bitd-broadcast">
   <div>{{#charimage}}{{^clock}}
     <div class="char-image">[Image]({{charimage}})</div>{{/clock}}{{/charimage}}

@@ -10,11 +10,10 @@
 .charsheet {
     color: #333;
     position: relative;
-    line-height: 18px;
     cursor: default;
     box-sizing: border-box;
     padding: 0 !important;
-    font-family: Georgia, "Bitstream Charter", "Times New Roman", serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .charsheet div,
@@ -90,9 +89,11 @@
 }
 
 .charsheet input[type=number] {
-    border-color: #c7c7c7;
-    color: #333;
-    box-shadow: none;
+  border: none;
+  box-shadow: none;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
 }
 
 .charsheet input[type=checkbox],
@@ -142,39 +143,6 @@
     display: none !important;
 }
 
-/* Version text */
-
-.sheet-topholder {
-    line-height: 22px;
-    margin: 0 0 7px calc(55% + 5px);
-}
-
-.sheet-topholder .sheet-version {
-    color: #aaa;
-    font-size: 13px;
-    font-family: "Times New Roman", Times, serif;
-}
-
-.sheet-topholder .sheet-version-text::after {
-    content: " ";
-}
-
-.sheet-topholder .sheet-settings-checkbox {
-    margin-right: 10px;
-    width: 20px;
-    height: 20px;
-    font-size: 16px;
-    font-family: pictos;
-}
-
-.sheet-topholder .sheet-settings-checkbox input+span {
-    opacity: 0.3;
-}
-
-.sheet-topholder .sheet-settings-checkbox input:checked+span {
-    opacity: 1;
-}
-
 .sheet-game-title {
   background-color: rgba(129, 228, 253, 0.829);
   padding: 5px;
@@ -187,12 +155,12 @@
 }
 
 input[type="radio"]:checked+label {
-  color: red;
+  border: 1px solid;
+  border-radius: 3px;
 }
 
 .sheet-game-select-button {
-  width: 60px;
-  height: 60px;
+  min-width: 60px;
   display: none
 }
 
@@ -228,6 +196,20 @@ input[type="radio"]:checked+label {
   height: 50px;
 }
 
+.sheet-playbook-title-block {
+  position: absolute;
+  transform: translate(0px, 60px);
+  width: 185px;
+  height: 24px;
+}
+
+.sheet-playbook-title {
+  font-size: 24px !important;
+  font-weight: bold;
+  font-style: italic;
+  text-transform: uppercase;
+}
+
 .sheet-game_type:not([value="advent"]) ~ .sheet-type-advent,
 .sheet-game_type:not([value="advent"]) ~ div .sheet-type-advent,
 .sheet-game_type:not([value="advent"]) ~ select .sheet-type-advent,
@@ -236,6 +218,111 @@ input[type="radio"]:checked+label {
 .sheet-game_type:not([value="ascent"]) ~ select .sheet-type-ascent {
   display: none;
 }
+
+.sheet-playbook-selector-box {
+  height: inherit;
+}
+
+.sheet-playbook-selection:not([value|="channeler"]) ~ .sheet-channeler-text,
+.sheet-playbook-selection:not([value|="ace"]) ~ .sheet-ace-text,
+.sheet-playbook-selection:not([value$="arcanist"]) ~ .sheet-arcanist-text,
+.sheet-playbook-selection:not([value$="tactician"]) ~ .sheet-tactician-text,
+.sheet-playbook-selection:not([value$="impostor"]) ~ .sheet-impostor-text,
+.sheet-playbook-selection:not([value$="aligned"]) ~ .sheet-aligned-text,
+.sheet-playbook-selection:not([value$="paradigm"]) ~ .sheet-paradigm-text,
+.sheet-playbook-selection:not([value$="haunted"]) ~ .sheet-haunted-text,
+.sheet-playbook-selection:not([value$="witch"]) ~ .sheet-witch-text,
+.sheet-playbook-selection:not([value$="leashed"]) ~ .sheet-leashed-text,
+.sheet-playbook-selection:not([value|="support"]) ~ .sheet-support-text,
+.sheet-playbook-selection:not([value$="scout"]) ~ .sheet-scout-text,
+.sheet-playbook-selection:not([value$="captain"]) ~ .sheet-captain-text,
+.sheet-playbook-selection:not([value$="artificer"]) ~ .sheet-artificer-text,
+.sheet-playbook-selection:not([value$="engineer"]) ~ .sheet-engineer-text,
+.sheet-playbook-selection:not([value$="diplomat"]) ~ .sheet-diplomat-text,
+.sheet-playbook-selection:not([value$="custom"]) ~ .sheet-custom-text {
+  display: none;
+}
+
+.sheet-ideal {
+  margin-top: 5px;
+}
+
+.sheet-foot-fighting-style {
+  display: flex;
+  flex-direction: row;
+}
+
+.sheet-fight-style-block {
+  height: 20px;
+  margin: 10px;
+}
+
+.sheet-fight-style-button {
+  min-width: 55px;
+  height: 100%;
+  display: none
+}
+
+.sheet-fight-style-label {
+  cursor: pointer;
+  min-width: 55px;
+  height: 100%;
+  text-align: center;
+  justify-content: center;
+}
+
+.sheet-fight-style-label:hover {
+  color: rgb(54, 54, 54);
+}
+
+.sheet-fight-style-button:checked+label {
+  color: black;
+  font-weight: bold;
+}
+
+.sheet-stat-section {
+  background-color: rgba(129, 228, 253, 0.829);
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+input[type=number].sheet-stats  {
+  background-color: rgba(0, 0, 0, 0);
+  font-weight: bold;
+  height: auto;
+}
+
+.sheet-stat-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+}
+
+.sheet-stat-button {
+  border: none;
+}
+
+.sheet-charstyle-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.sheet-style-block {
+  display: flex;
+  flex-direction: row;
+  align-content: stretch;
+}
+
+.sheet-style-label {
+  min-width: 50%;
+}
+
+.sheet-style-field {
+  border-bottom: solid 1px;
+  width: 100%;
+}
+
 /* SETTINGS */
 
 .sheet-type[value="character"]~.sheet-settings> :not(.sheet-setting-char) {
@@ -640,10 +727,7 @@ textarea.sheet-smallcaps {
     font-size: 14px;
     line-height: 1.3;
     text-align: left;
-    padding: 3px 0 0 2px;
-    margin: 3px 0 0;
     min-height: 22px;
-    color: #c43c35;
 }
 
 .sheet-header input[type="hidden"][value=""]+div>.sheet-title::after {
