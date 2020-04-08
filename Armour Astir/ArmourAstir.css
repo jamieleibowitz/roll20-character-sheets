@@ -8,12 +8,12 @@
 /* GENERALITIES */
 
 .charsheet {
-    color: #333;
-    position: relative;
-    cursor: default;
-    box-sizing: border-box;
-    padding: 0 !important;
-    font-family: 'Roboto', sans-serif;
+  color: black;
+  position: relative;
+  cursor: default;
+  box-sizing: border-box;
+  padding: 0 !important;
+  font-family: 'Roboto', sans-serif;
 }
 
 .charsheet div,
@@ -59,18 +59,8 @@
     opacity: 0.7;
 }
 
-.charsheet input[type=text],
-.charsheet textarea {
-    border: none;
-    font-family: inherit;
-    background: transparent;
-    box-shadow: none;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    color: #333;
-    border-radius: 0;
-    transition: all 0.2s, height 0.4s;
+.charsheet input[type="text"], .charsheet textarea {
+  background: transparent;
 }
 
 .charsheet textarea {
@@ -203,11 +193,17 @@ input[type="radio"]:checked+label {
   height: 24px;
 }
 
+.sheet-crew-stat-block {
+  position: absolute;
+  transform: translate(803px, 60px);
+}
+
 .sheet-playbook-title {
   font-size: 24px !important;
   font-weight: bold;
   font-style: italic;
   text-transform: uppercase;
+  border: none;
 }
 
 .sheet-game_type:not([value="advent"]) ~ .sheet-type-advent,
@@ -243,8 +239,17 @@ input[type="radio"]:checked+label {
   display: none;
 }
 
+.sheet-section-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
 .sheet-ideal {
   margin-top: 5px;
+}
+
+.sheet-stat-style-column {
+  padding-left: 10px;
 }
 
 .sheet-foot-fighting-style {
@@ -319,8 +324,57 @@ input[type=number].sheet-stats  {
 }
 
 .sheet-style-field {
-  border-bottom: solid 1px;
   width: 100%;
+}
+
+.sheet-style-input {
+  border-bottom: solid 1px;
+}
+
+.sheet-style-custom-box {
+  border: none;
+  padding: 0px;
+  color: black;
+}
+
+.sheet-gear-section, .sheet-danger-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.sheet-danger-list {
+  display: flex;
+  flex-direction: row;
+}
+
+.sheet-danger-container {
+  width: 33%;
+  padding: 5px;
+}
+
+.sheet-danger-description {
+  width: 100%;
+}
+
+input.sheet-risk, input.sheet-peril {
+  opacity: 1;
+}
+
+.sheet-danger-span {
+  padding: 2px;
+}
+
+.sheet-rolltemplate-move_rolls div.sheet-template-container {
+  color: black;
+  border: none;
+  background: white;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.sheet-rolltemplate-move_rolls .inlinerollresult {
+  border: none !important;
+  background-color: transparent;
+  font-weight: normal;
 }
 
 /* SETTINGS */
@@ -722,12 +776,13 @@ textarea.sheet-smallcaps {
 
 .sheet-header input[type=text],
 .sheet-header .sheet-auto-expand {
-    width: 100%;
-    border-bottom: 1px solid black;
-    font-size: 14px;
-    line-height: 1.3;
-    text-align: left;
-    min-height: 22px;
+  color: black;
+  width: 100%;
+  border-bottom: 1px solid black;
+  font-size: 14px;
+  line-height: 1.3;
+  text-align: left;
+  min-height: 22px;
 }
 
 .sheet-header input[type="hidden"][value=""]+div>.sheet-title::after {
@@ -775,6 +830,29 @@ textarea.sheet-smallcaps {
 .sheet-header .sheet-vice .sheet-smallcaps {
     font-size: 130%;
     line-height: 0;
+}
+
+.sheet-moves-repcontainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.sheet-basic-moves {
+  display: flex;
+  flex-direction: column;
+}
+
+.sheet-playbook-moves {
+  display: flex;
+  flex-direction: column;
+}
+
+.sheet-additional-moves-container {
+  margin-bottom: 20px;
+}
+
+textarea.sheet-move-description {
+  margin-bottom: 0px;
 }
 
 
@@ -852,6 +930,38 @@ textarea.sheet-smallcaps {
     left: 0;
     top: 0;
     z-index: -1;
+}
+
+.sheet-clock-block {
+  flex-direction: column;
+  width: 190px;
+}
+
+.sheet-clock-name-row {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.sheet-clock-label {
+  border: none;
+}
+
+.sheet-gravity-stat-block {
+  position: absolute;
+  transform: translateY(-26px);
+}
+
+.sheet-broadcast-button {
+  transform: translateX(75px);
+}
+
+.sheet-broadcast-button-label {
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.sheet-broadcast-button {
+  border: none;
 }
 
 [class^="sheet-spoke"] {
@@ -1654,20 +1764,20 @@ label.sheet-generatebutton:hover input+span {
 }
 
 .sheet-auto-expand textarea {
-    position: absolute;
-    overflow: hidden;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    resize: none;
-    height: 100%;
-    word-wrap: break-word;
-    padding: inherit;
-    font: inherit;
-    color: inherit;
-    text-transform: inherit;
-    letter-spacing: inherit;
-    text-align: inherit;
+  position: absolute;
+  overflow: hidden;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  resize: none;
+  height: 100%;
+  word-wrap: break-word;
+  padding: inherit;
+  font: inherit;
+  color: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
+  text-align: inherit;
 }
 
 /* ROLL TEMPLATES */
@@ -1679,7 +1789,7 @@ label.sheet-generatebutton:hover input+span {
     margin-left: -15px;
 }
 
-.withoutavatars .sheet-rolltemplate-bitd-broadcast {
+.withoutavatars .sheet-rolltemplate-clock-broadcast {
     margin-left: -15px;
 }
 
@@ -1965,4 +2075,250 @@ label.sheet-generatebutton:hover input+span {
     font-size: 13px;
     padding: 20px 0;
     color: fortunegrey;
+}
+
+/* BROADCAST TEMPLATE */
+.sheet-rolltemplate-clock-broadcast {
+  margin: 0 -5px -4px -45px;
+  max-width: 299px;
+  padding: 16px 10px 15px 20px;
+  overflow: hidden;
+  box-sizing: border-box;
+  position: relative;
+  font-family: inherit;
+}
+.sheet-rolltemplate-clock-broadcast .sheet-header {
+  color: #e74a10;
+  font-size: 15px;
+  line-height: 19px;
+  font-variant: small-caps;
+  letter-spacing: 1px;
+  font-weight: 800;
+}
+.sheet-rolltemplate-clock-broadcast .sheet-header.sheet-narrow {
+  width: calc(100% - 62px);
+}
+
+.sheet-rolltemplate-clock-broadcast .sheet-flex {
+  display: flex;
+  align-items: center;
+  clear: both;
+  margin: 5px 0 0;
+}
+
+.sheet-rolltemplate-clock-broadcast .sheet-flex .sheet-title {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.sheet-rolltemplate-clock-broadcast .sheet-title {
+  margin: 9px 0 0;
+  text-transform: uppercase;
+  position: relative;
+  font-weight: bold;
+  word-wrap: normal;
+  font-size: 23px;
+  line-height: 29px;
+}
+
+.sheet-rolltemplate-clock-broadcast .sheet-content {
+  padding: 15px 0 5px;
+  line-height: 1.3;
+  font-size: 13px;
+  color: #ccc;
+}
+
+.sheet-rolltemplate-clock-broadcast .sheet-clock {
+  width: 88px;
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  position: relative;
+  background: white;
+  height: 88px;
+  border: 4px solid black;
+  border-radius: 50%;
+  margin-right: 4px;
+}
+.sheet-rolltemplate-clock-broadcast [class^='sheet-spoke'] {
+  height: 88px;
+  width: 4px;
+  position: absolute;
+  background: black;
+}
+.sheet-rolltemplate-clock-broadcast [class^='sheet-spoke']:not(.sheet-spoke-0) {
+  display: none;
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-4 .sheet-spoke-90,
+.sheet-rolltemplate-clock-broadcast .sheet-size-6 .sheet-spoke-60,
+.sheet-rolltemplate-clock-broadcast .sheet-size-6 .sheet-spoke-120,
+.sheet-rolltemplate-clock-broadcast .sheet-size-8 .sheet-spoke-45,
+.sheet-rolltemplate-clock-broadcast .sheet-size-8 .sheet-spoke-90,
+.sheet-rolltemplate-clock-broadcast .sheet-size-8 .sheet-spoke-135,
+.sheet-rolltemplate-clock-broadcast .sheet-size-10 .sheet-spoke-36,
+.sheet-rolltemplate-clock-broadcast .sheet-size-10 .sheet-spoke-72,
+.sheet-rolltemplate-clock-broadcast .sheet-size-10 .sheet-spoke-108,
+.sheet-rolltemplate-clock-broadcast .sheet-size-10 .sheet-spoke-144,
+.sheet-rolltemplate-clock-broadcast .sheet-size-12 .sheet-spoke-30,
+.sheet-rolltemplate-clock-broadcast .sheet-size-12 .sheet-spoke-60,
+.sheet-rolltemplate-clock-broadcast .sheet-size-12 .sheet-spoke-90,
+.sheet-rolltemplate-clock-broadcast .sheet-size-12 .sheet-spoke-120,
+.sheet-rolltemplate-clock-broadcast .sheet-size-12 .sheet-spoke-150 {
+  display: block;
+}
+.sheet-rolltemplate-clock-broadcast .sheet-spoke-0 {
+  transform: translate(39px, -4px);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-spoke-30 {
+  transform: translate(39px, -4px) rotate(30deg);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-spoke-36 {
+  transform: translate(39px, -4px) rotate(36deg);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-spoke-45 {
+  transform: translate(39px, -4px) rotate(45deg);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-spoke-60 {
+  transform: translate(39px, -4px) rotate(60deg);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-spoke-72 {
+  transform: translate(39px, -4px) rotate(72deg);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-spoke-90 {
+  transform: translate(39px, -4px) rotate(90deg);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-spoke-108 {
+  transform: translate(39px, -4px) rotate(108deg);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-spoke-120 {
+  transform: translate(39px, -4px) rotate(120deg);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-spoke-135 {
+  transform: translate(39px, -4px) rotate(135deg);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-spoke-144 {
+  transform: translate(39px, -4px) rotate(144deg);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-spoke-150 {
+  transform: translate(39px, -4px) rotate(150deg);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-4.sheet-progress-1 {
+  background-image: linear-gradient(90deg, white 50%, transparent 50%), linear-gradient(180deg, red 50%, white 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-4.sheet-progress-2 {
+  background-image: linear-gradient(90deg, transparent 50%, red 50%), linear-gradient(90deg, white 50%, red 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-4.sheet-progress-3 {
+  background-image: linear-gradient(180deg, transparent 50%, red 50%), linear-gradient(90deg, white 50%, red 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-4.sheet-progress-4 {
+  background: red;
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-6.sheet-progress-1 {
+  background-image: linear-gradient(90deg, white 50%, transparent 50%), linear-gradient(150deg, red 50%, white 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-6.sheet-progress-2 {
+  background-image: linear-gradient(90deg, white 50%, transparent 50%), linear-gradient(210deg, red 50%, white 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-6.sheet-progress-3 {
+  background-image: linear-gradient(90deg, transparent 50%, red 50%), linear-gradient(90deg, white 50%, red 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-6.sheet-progress-4 {
+  background-image: linear-gradient(150deg, transparent 50%, red 50%), linear-gradient(90deg, white 50%, red 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-6.sheet-progress-5 {
+  background-image: linear-gradient(210deg, transparent 50%, red 50%), linear-gradient(90deg, white 50%, red 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-6.sheet-progress-6 {
+  background: red;
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-8.sheet-progress-1 {
+  background-image: linear-gradient(90deg, white 50%, transparent 50%), linear-gradient(135deg, red 50%, white 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-8.sheet-progress-2 {
+  background-image: linear-gradient(90deg, white 50%, transparent 50%), linear-gradient(180deg, red 50%, white 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-8.sheet-progress-3 {
+  background-image: linear-gradient(90deg, white 50%, transparent 50%), linear-gradient(225deg, red 50%, white 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-8.sheet-progress-4 {
+  background-image: linear-gradient(90deg, transparent 50%, red 50%), linear-gradient(90deg, white 50%, red 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-8.sheet-progress-5 {
+  background-image: linear-gradient(135deg, transparent 50%, red 50%), linear-gradient(90deg, white 50%, red 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-8.sheet-progress-6 {
+  background-image: linear-gradient(180deg, transparent 50%, red 50%), linear-gradient(90deg, white 50%, red 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-8.sheet-progress-7 {
+  background-image: linear-gradient(225deg, transparent 50%, red 50%), linear-gradient(90deg, white 50%, red 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-8.sheet-progress-8 {
+  background: red;
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-10.sheet-progress-1 {
+  background-image: linear-gradient(90deg, white 50%, transparent 50%), linear-gradient(126deg, red 50%, white 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-10.sheet-progress-2 {
+  background-image: linear-gradient(90deg, white 50%, transparent 50%), linear-gradient(162deg, red 50%, white 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-10.sheet-progress-3 {
+  background-image: linear-gradient(90deg, white 50%, transparent 50%), linear-gradient(198deg, red 50%, white 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-10.sheet-progress-4 {
+  background-image: linear-gradient(90deg, white 50%, transparent 50%), linear-gradient(234deg, red 50%, white 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-10.sheet-progress-5 {
+  background-image: linear-gradient(90deg, transparent 50%, red 50%), linear-gradient(90deg, white 50%, red 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-10.sheet-progress-6 {
+  background-image: linear-gradient(126deg, transparent 50%, red 50%), linear-gradient(90deg, white 50%, red 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-10.sheet-progress-7 {
+  background-image: linear-gradient(162deg, transparent 50%, red 50%), linear-gradient(90deg, white 50%, red 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-10.sheet-progress-8 {
+  background-image: linear-gradient(198deg, transparent 50%, red 50%), linear-gradient(90deg, white 50%, red 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-10.sheet-progress-9 {
+  background-image: linear-gradient(234deg, transparent 50%, red 50%), linear-gradient(90deg, white 50%, red 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-10.sheet-progress-10 {
+  background: red;
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-12.sheet-progress-1 {
+  background-image: linear-gradient(90deg, white 50%, transparent 50%), linear-gradient(120deg, red 50%, white 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-12.sheet-progress-2 {
+  background-image: linear-gradient(90deg, white 50%, transparent 50%), linear-gradient(150deg, red 50%, white 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-12.sheet-progress-3 {
+  background-image: linear-gradient(90deg, white 50%, transparent 50%), linear-gradient(180deg, red 50%, white 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-12.sheet-progress-4 {
+  background-image: linear-gradient(90deg, white 50%, transparent 50%), linear-gradient(210deg, red 50%, white 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-12.sheet-progress-5 {
+  background-image: linear-gradient(90deg, white 50%, transparent 50%), linear-gradient(240deg, red 50%, white 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-12.sheet-progress-6 {
+  background-image: linear-gradient(90deg, transparent 50%, red 50%), linear-gradient(90deg, white 50%, red 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-12.sheet-progress-7 {
+  background-image: linear-gradient(120deg, transparent 50%, red 50%), linear-gradient(90deg, white 50%, red 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-12.sheet-progress-8 {
+  background-image: linear-gradient(150deg, transparent 50%, red 50%), linear-gradient(90deg, white 50%, red 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-12.sheet-progress-9 {
+  background-image: linear-gradient(180deg, transparent 50%, red 50%), linear-gradient(90deg, white 50%, red 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-12.sheet-progress-10 {
+  background-image: linear-gradient(210deg, transparent 50%, red 50%), linear-gradient(90deg, white 50%, red 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-12.sheet-progress-11 {
+  background-image: linear-gradient(240deg, transparent 50%, red 50%), linear-gradient(90deg, white 50%, red 50%);
+}
+.sheet-rolltemplate-clock-broadcast .sheet-size-12.sheet-progress-12 {
+  background: red;
 }

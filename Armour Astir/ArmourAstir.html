@@ -4,7 +4,16 @@
 <input class="use-kirsty" type="hidden" name="attr_setting_usekirsty" value="0"/>
 <input class="flexwidth" type="hidden" name="attr_setting_flexwidth" value="0"/>
 <input type="hidden" name="attr_changed_attributes" value=""/>
-<input type="hidden" name="attr_rolltype" value="2d6">
+<input type="hidden" name="attr_rolltype" value="?{Advantage|Normal, 2d6|Advantage, 3d6kh2|Disadvantage, 3d6kl2}">
+<input type="hidden" name="attr_effect_query" value="?{Effect|Normal,mixed-success|Increased Effect,success|Reduced Effect,failure}"/>
+<input type="hidden" name="attr_wts_stat_query" value="?{Select Stat|Defy, @{defy}|Know, @{know}}"/>
+<input type="hidden" name="attr_gravity_query" value="?{Gravity with the Target|0|1|2|3}"/>
+<input type="hidden" name="attr_all_stats_query_ch" value="?{Select Stat|Defy, @{defy}|Sense, @{sense}|Know, @{know}|Clash, @{clash}|Talk, @{talk}|Channel, @{channel}|Crew, @{crew}}"/>
+<input type="hidden" name="attr_all_stats_query_ace" value="?{Select Stat|Defy, @{defy}|Sense, @{sense}|Know, @{know}|Clash, @{clash}|Talk, @{talk}|Zeal, @{zeal}|Crew, @{crew}}"/>
+<input type="hidden" name="attr_all_stats_query_suprt" value="?{Select Stat|Defy, @{defy}|Sense, @{sense}|Know, @{know}|Clash, @{clash}|Talk, @{talk}|Crew, @{crew}}"/>
+<input type="hidden" name="attr_combat_stat_query" value="?{Select Stat|Clash, @{clash}|Talk, @{talk}}"/>
+<input type="hidden" name="attr_sortie_stat_query" value="?{Select Stat|Defy, @{defy}|Know, @{know}|Crew, @{crew}}"/>
+<input type="hidden" name="attr_overhear_stat_query" value="?{Select Stat|Sense, @{sense}|Crew, @{crew}}"/>
 <div class="container">
   <input class="game_type" type="hidden" name="attr_game_type" value="advent"/>
   <input class="playbook-selection" type="hidden" name="attr_playbook-dropdown" value=""/>
@@ -64,6 +73,14 @@
       <span class="playbook-title diplomat-text" data-i18n="diplomat"></span>
       <input type="text" class="playbook-title custom-text custom-class-name" placeholder="Custom..." />
     </div>
+    <div class="crew-stat-block">
+      <div class="stat-block">
+        <input type="number" name="attr_crew" class="stats" min="-3" max="3" value="0"/>
+        <button type="roll" class="stat-button" name="roll_crew" value="&{template:stat_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{crew}]]}}">
+          <span data-i18n="crew"></span>
+        </button>
+      </div>
+    </div>
   </div>
   <!-- Debugging Indicators -->
   <span class="type-advent">Advent</span>
@@ -87,7 +104,7 @@
   <span class="custom-text">Custom</span>
   <div class="type-character flex">
     <!-- Left column-->
-    <div class="col55 flex-wrap">
+    <div class="col55 flex-wrap name-ideals-block">
       <!-- Header text fields-->
       <div class="col100 header flex">
         <label class="col100">
@@ -104,12 +121,12 @@
         </label>
       </div>
     </div>
-    <div class="col45 flex-wrap">
+    <div class="col45 flex-wrap stat-style-column">
       <!-- On-foot fighting style -->
       <span data-i18n="foot-fighting-style"></span>
       <div class="foot-fighting-style type-advent">
         <div class="fight-style-block">
-          <input id="fight-style-mundane" id="fight-style-mundane" class="fight-style-button" type="radio" name="attr_fight_style" value="mundane"/>
+          <input id="fight-style-mundane" class="fight-style-button" type="radio" name="attr_fight_style" value="mundane"/>
           <label for="fight-style-mundane" class="fight-style-label" data-i18n="mundane"></label>
         </div>
         <div class="fight-style-block">
@@ -157,43 +174,43 @@
         <input class="playbook-selection" type="hidden" name="attr_playbook-dropdown" value=""/>
         <div class="stat-block">
           <input type="number" name="attr_defy" class="stats" min="-3" max="3" value="0"/>
-          <button type="roll" class="stat-button" name="roll_defy" value="/roll @{rolltype} + @{defy}">
+          <button type="roll" class="stat-button" name="roll_defy" value="&{template:stat_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{defy}]]}}">
             <span data-i18n="defy"></span>
           </button>
         </div>
         <div class="stat-block">
           <input type="number" name="attr_sense" class="stats" min="-3" max="3" value="0"/>
-          <button type="roll" class="stat-button" name="roll_sense" value="/roll @{rolltype} + @{sense}">
+          <button type="roll" class="stat-button" name="roll_sense" value="&{template:stat_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{sense}]]}}">
             <span data-i18n="sense"></span>
           </button>
         </div>
         <div class="stat-block">
           <input type="number" name="attr_know" class="stats" min="-3" max="3" value="0"/>
-          <button type="roll" class="stat-button" name="roll_know" value="/roll @{rolltype} + @{know}">
+          <button type="roll" class="stat-button" name="roll_know" value="&{template:stat_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{know}]]}}">
             <span data-i18n="know"></span>
           </button>
         </div>
         <div class="stat-block">
           <input type="number" name="attr_clash" class="stats" min="-3" max="3" value="0"/>
-          <button type="roll" class="stat-button" name="roll_clash" value="/roll @{rolltype} + @{clash}">
+          <button type="roll" class="stat-button" name="roll_clash" value="&{template:stat_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{clash}]]}}">
             <span data-i18n="clash"></span>
           </button>
         </div>
         <div class="stat-block">
           <input type="number" name="attr_talk" class="stats" min="-3" max="3" value="0"/>
-          <button type="roll" class="stat-button" name="roll_talk" value="/roll @{rolltype} + @{talk}">
+          <button type="roll" class="stat-button" name="roll_talk" value="&{template:stat_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{talk}]]}}">
             <span data-i18n="talk"></span>
           </button>
         </div>
         <div class="stat-block type-advent channeler-text">
           <input type="number" name="attr_channel" class="stats" min="-3" max="3" value="0"/>
-          <button type="roll" class="stat-button" name="roll_channel" value="/roll @{rolltype} + @{channel}">
+          <button type="roll" class="stat-button" name="roll_channel" value="&{template:stat_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{channel}]]}}">
             <span data-i18n="channel"></span>
           </button>
         </div>
         <div class="stat-block type-ascent ace-text">
           <input type="number" name="attr_zeal" class="stats" min="-3" max="3" value="0"/>
-          <button type="roll" class="stat-button" name="roll_zeal" value="/roll @{rolltype} + @{zeal}">
+          <button type="roll" class="stat-button" name="roll_zeal" value="&{template:stat_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{zeal}]]}}">
             <span data-i18n="zeal"></span>
           </button>
         </div>
@@ -202,129 +219,436 @@
         <input class="playbook-selection" type="hidden" name="attr_playbook-dropdown" value=""/>
         <div class="style-block style-look">
           <span class="style-label" data-i18n="you-look"></span>
-          <div class="style-field"><input type="text" name="attr_look"/></div>
+          <div class="style-field"><input class="style-input" type="text" name="attr_look"/></div>
         </div>
         <div class="style-block style-wear">
           <span class="style-label" data-i18n="you-wear"></span>
-          <div class="style-field"><input type="text" name="attr_clothes"/></div>
+          <div class="style-field"><input class="style-input" type="text" name="attr_clothes"/></div>
         </div>
         <div class="channeler-text style-block style-magic">
           <span class="style-label" data-i18n="your-magic-is-like"></span>
-          <div class="style-field"><input type="text" name="attr_magic_style"/></div>
+          <div class="style-field"><input class="style-input" type="text" name="attr_magic_style"/></div>
         </div>
         <div class="tactician-text style-block style-tactic-style">
           <span class="style-label" data-i18n="your-style-is"></span>
-          <div class="style-field"><input type="text" name="attr_tactic_style"/></div>
+          <div class="style-field"><input class="style-input" type="text" name="attr_tactic_style"/></div>
         </div>
         <div class="aligned-text style-block style-augments">
           <span class="style-label" data-i18n="your-augments-are"></span>
-          <div class="style-field"><input type="text" name="attr_augment_style"/></div>
+          <div class="style-field"><input class="style-input" type="text" name="attr_augment_style"/></div>
         </div>
         <div class="haunted-text style-block style-aura">
           <span class="style-label" data-i18n="your-aura-is"></span>
-          <div class="style-field"><input type="text" name="attr_aura_style"/></div>
+          <div class="style-field"><input class="style-input" type="text" name="attr_aura_style"/></div>
         </div>
         <div class="leashed-text style-block style-marks">
           <span class="style-label" data-i18n="you-are-marked-by"></span>
-          <div class="style-field"><input type="text" name="attr_marks_style"/></div>
+          <div class="style-field"><input class="style-input" type="text" name="attr_marks_style"/></div>
         </div>
         <div class="scout-text style-block style-fight-with">
           <span class="style-label" data-i18n="you-fight-with"></span>
-          <div class="style-field"><input type="text" name="attr_fight_with"/></div>
+          <div class="style-field"><input class="style-input" type="text" name="attr_fight_with"/></div>
         </div>
         <div class="captain-text style-block style-lead">
           <span class="style-label" data-i18n="you-lead-with"></span>
-          <div class="style-field"><input type="text" name="attr_lead_style"/></div>
+          <div class="style-field"><input class="style-input" type="text" name="attr_lead_style"/></div>
         </div>
         <div class="artificer-text style-block style-handiwork">
           <span class="style-label" data-i18n="your-handiwork-looks"></span>
-          <div class="style-field"><input type="text" name="attr_handiwork_style"/></div>
+          <div class="style-field"><input class="style-input" type="text" name="attr_handiwork_style"/></div>
         </div>
         <div class="engineer-text style-block style-handiwork">
           <span class="style-label" data-i18n="your-handiwork-looks"></span>
-          <div class="style-field"><input type="text" name="attr_handiwork_style"/></div>
+          <div class="style-field"><input class="style-input" type="text" name="attr_handiwork_style"/></div>
         </div>
         <div class="diplomat-text style-block style-reputation">
           <span class="style-label" data-i18n="you-have-a-reputation-for-being"></span>
-          <div class="style-field"><input type="text" name="attr_reputation_style"/></div>
+          <div class="style-field"><input class="style-input" type="text" name="attr_reputation_style"/></div>
         </div>
         <div class="custom-text style-block style-third-trait">
           <span class="style-label" data-i18n="custom-third-trait"></span>
-          <div class="style-field"><input type="text" name="attr_3rd_trait_style"/></div>
+          <div class="style-field"><input class="style-input" type="text" name="attr_3rd_trait_style"/></div>
         </div>
       </div>
     </div>
   </div>
-  <div>
-    <!-- Right column-->
-    <div class="col45 flex-wrap right-column">
+  <!-- Gear and Dangers Section -->
+  <div class="col100 flex-wrap gear-and-danger-section">
+    <div class="col50 gear-section">
+      <span class="section-title" data-i18n="gear-header"></span>
+      <div class="col100 free-repcontrol gear-repcontainer">
+        <fieldset class="repeating_gear">
+          <div class="equipment-item-container">
+            <input type="text" name="attr_equipment_item"/>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+    <div class="col50 danger-section">
+      <span class="section-title" data-i18n="danger-title"></span>
+      <div class="danger-list">
+        <div class="danger-container">
+          <input type="text" class="danger-description" placeholder="Danger description"/>
+          <div class="dangers-checkboxes">
+            <input type="checkbox" class="risk"/><span class="danger-span" data-i18n="dangers-risk"></span>
+            <input type="checkbox" class="peril"/><span class="danger-span" data-i18n="dangers-peril"></span>
+          </div>
+        </div>
+        <div class="danger-container">
+          <input type="text" class="danger-description" placeholder="Danger description"/>
+          <div class="dangers-checkboxes">
+            <input type="checkbox" class="risk"/><span class="danger-span" data-i18n="dangers-risk"></span>
+            <input type="checkbox" class="peril"/><span class="danger-span" data-i18n="dangers-peril"></span>
+          </div>
+        </div>
+        <div class="danger-container">
+          <input type="text" class="danger-description" placeholder="Danger description"/>
+          <div class="dangers-checkboxes">
+            <input type="checkbox" class="risk"/><span class="danger-span" data-i18n="dangers-risk"></span>
+            <input type="checkbox" class="peril"/><span class="danger-span" data-i18n="dangers-peril"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Moves Section -->
+  <div class="col100 flex moves-section">
+    <div class="col50 flex basic-moves">
+      <span class="subsection-title" data-i18n="basic-moves-title"></span>
+      <div class="basic-moves-list">
+        <input class="game_type" type="hidden" name="attr_game_type" value="advent"/>
+        <input class="playbook-selection" type="hidden" name="attr_playbook-dropdown" value=""/>
+        <div class="move-weather-the-storm">
+          <button type="roll" class="move-button" name="roll_weather_the_storm" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{wts_stat_query}]]}}">
+            <span data-i18n="weather-the-storm-title"></span>
+          </button>
+          <p data-i18n="weather-the-storm-description"></p>
+        </div>
+        <div class="move-read-the-room">
+          <button type="roll" class="move-button" name="roll_read_the_room" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{sense}]]}}">
+            <span data-i18n="read-the-room-title"></span>
+          </button>
+          <p data-i18n="read-the-room-description"></p>
+        </div>
+        <div class="move-dispel-uncertainties">
+          <button type="roll" class="move-button" name="roll_dispel_uncertainties" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{know}]]}}">
+            <span data-i18n="dispel-uncertainties-title"></span>
+          </button>
+          <p data-i18n="dispel-uncertainties-description"></p>
+        </div>
+        <div class="move-help-or-hinder">
+          <button type="roll" class="move-button" name="roll_help_or_hinder" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{gravity_query}]]}}">
+            <span data-i18n="help-or-hinder-title"></span>
+          </button>
+          <p data-i18n="help-or-hinder-description"></p>
+        </div>
+        <div class="move-weave-magic type-advent channeler-text">
+          <button type="roll" class="move-button" name="roll_weave_magic" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{channel}]]}}">
+            <span data-i18n="weave-magic-title"></span>
+          </button>
+          <p data-i18n="weave-magic-description"></p>
+        </div>
+        <div class="move-limit-break type-ascent ace-text">
+          <button type="roll" class="move-button" name="roll_limit_break" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{zeal}]]}}">
+            <span data-i18n="limit-break-title"></span>
+          </button>
+          <p data-i18n="limit-break-description"></p>
+        </div>
+        <div class="move-cool-off channeler-text">
+          <button type="roll" class="move-button" name="roll_cool_off" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{all_stats_query_ch}]]}}">
+            <span data-i18n="cool-off-title"></span>
+          </button>
+          <p data-i18n="cool-off-description"></p>
+        </div>
+        <div class="move-cool-off ace-text">
+          <button type="roll" class="move-button" name="roll_cool_off" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{all_stats_query_ace}]]}}">
+            <span data-i18n="cool-off-title"></span>
+          </button>
+          <p data-i18n="cool-off-description"></p>
+        </div>
+        <div class="move-cool-off support-text">
+          <button type="roll" class="move-button" name="roll_cool_off" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{all_stats_query_suprt}]]}}">
+            <span data-i18n="cool-off-title"></span>
+          </button>
+          <p data-i18n="cool-off-description"></p>
+        </div>
+        <div class="move-exchange-blows">
+          <button type="roll" class="move-button" name="roll_exchange_blows" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{combat_stat_query}]]}}">
+            <span data-i18n="exchange-blows-title"></span>
+          </button>
+          <p data-i18n="exchange-blows-description"></p>
+        </div>
+        <div class="move-strike-decisively">
+          <button type="roll" class="move-button" name="roll_strike_decisively" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{combat_stat_query}]]}}">
+            <span data-i18n="strike-decisively-title"></span>
+          </button>
+          <p data-i18n="strike-decisively-description"></p>
+        </div>
+        <div class="move-bite-the-dust">
+          <button type="roll" class="move-button" name="roll_bite_the_dust" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{defy}]]}}">
+            <span data-i18n="bite-the-dust-title"></span>
+          </button>
+          <p data-i18n="bite-the-dust-description"></p>
+        </div>
+        <div class="move-lead-a-sortie">
+          <button type="roll" class="move-button" name="roll_lead_a_sortie" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{sortie_stat_query}]]}}">
+            <span data-i18n="lead-a-sortie-title"></span>
+          </button>
+          <p data-i18n="lead-a-sortie-description"></p>
+        </div>
+        <div class="move-subsystems type-advent">
+          <button type="roll" class="move-button" name="roll_subsystems" value="&{template:move_description_rolls} {{premove='true'}} {{move=subsystems}}">
+            <span data-i18n="subsystems-title"></span>
+          </button>
+          <p data-i18n="subsystems-description"></p>
+        </div>
+        <div class="move-overdrive type-ascent">
+          <button type="roll" class="move-button" name="roll_overdrive" value="&{template:move_description_rolls} {{premove='true'}} {{move=overdrive}}">
+            <span data-i18n="overdrive-title"></span>
+          </button>
+          <p data-i18n="overdrive-description"></p>
+        </div>
+        <div class="move-overhear">
+          <button type="roll" class="move-button" name="roll_overhear" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{overhear_stat_query}]]}}">
+            <span data-i18n="overhear-title"></span>
+          </button>
+          <p data-i18n="overhear-description"></p>
+        </div>
+        <div class="move-talk-it-out">
+          <button type="roll" class="move-button" name="roll_talk-it-out" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{talk}]]}}">
+            <span data-i18n="talk-it-out-title"></span>
+          </button>
+          <p data-i18n="talk-it-out-description"></p>
+        </div>
+        <div class="move-mend-something">
+          <button type="roll" class="move-button" name="roll_mend-something" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{crew}]]}}">
+            <span data-i18n="mend-something-title"></span>
+          </button>
+          <p data-i18n="mend-something-description"></p>
+        </div>
+        <div class="move-shore-leave">
+          <button type="roll" class="move-button" name="roll_shore-leave" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{talk}]]}}">
+            <span data-i18n="shore-leave-title"></span>
+          </button>
+          <p data-i18n="shore-leave-description"></p>
+        </div>
+        <div class="move-work-on-a-project channeler-text">
+          <button type="roll" class="move-button" name="roll_work-on-a-project" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{all_stats_query_ch}]]}}">
+            <span data-i18n="work-on-a-project-title"></span>
+          </button>
+          <p data-i18n="work-on-a-project-description"></p>
+        </div>
+        <div class="move-work-on-a-project ace-text">
+          <button type="roll" class="move-button" name="roll_work-on-a-project" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{all_stats_query_ace}]]}}">
+            <span data-i18n="work-on-a-project-title"></span>
+          </button>
+          <p data-i18n="work-on-a-project-description"></p>
+        </div>
+        <div class="move-work-on-a-project support-text">
+          <button type="roll" class="move-button" name="roll_work-on-a-project" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{all_stats_query_suprt}]]}}">
+            <span data-i18n="work-on-a-project-title"></span>
+          </button>
+          <p data-i18n="work-on-a-project-description"></p>
+        </div>
+        <div class="move-plan-and-prepare">
+          <button type="roll" class="move-button" name="roll_plan-and-prepare" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{know}]]}}">
+            <span data-i18n="plan-and-prepare-title"></span>
+          </button>
+          <p data-i18n="plan-and-prepare-description"></p>
+        </div>
+      </div>
+    </div>
+    <div class="col50 flex playbook-moves">
+      <span class="subsection-title" data-i18n="playbook-moves-title"></span>
+      <div class="col100 free-repcontrol moves-repcontainer">
+        <fieldset class="repeating_moves">
+          <div class="col100 additional-moves-container">
+            <div class="movename">
+              <input class="repcontrol_edit" type="text" name="attr_mv_name" placeholder="Move name..."/>
+            </div>
+            <div class="movedesc">
+              <textarea class="auto-expand move-description" name="attr_mv_description" placeholder="Move description here..."></textarea>
+            </div>
+            <button type="roll" class="move-button" name="roll_display-move" value="&{template:move_description_rolls} {{custmove='true'}} {{charname=@{name}}} {{mv_name=@{mv_name}}} {{mv_description=@{mv_description}}}">
+              <span data-i18n="move-display-button-label"></span>
+            </button>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+  <!-- Astir Section -->
+  <div class="col100 flex astir-section">
+    <input class="playbook-selection" type="hidden" name="attr_playbook-dropdown" value=""/>
+    <span class="section-title type-advent channeler-text" data-i18n="astir-section-title"></span>
+    <span class="section-title type-ascent ace-text" data-i18n="astir-section-title"></span>
+    <div class="advent-astir-section channeler-text type-advent">
+      <div class="astir-name-tier-box"><span data-i18n="astir-name"></span></div>
+      <div class="astir-approach"><span data-i18n="astir-approach"></span></div>
+      <div class="astir-core"><span data-i18n="astir-core"></span></div>
+      <div class="astir-mana"><span data-i18n="astir-mana"></span></div>
+      <div class="astir-overheating"><span data-i18n="astir-overheating"></span></div>
+      <div class="astir-part"><span data-i18n="astir-part1"></span></div>
+      <div class="astir-part"><span data-i18n="astir-part2"></span></div>
+      <div class="astir-description"><span data-i18n="astir-description"></span></div>
+      <div class="astir-special-move"><span data-i18n="astir-special-move"></span></div>
+      <div class="astir-mounted-carried-sheathed"><span data-i18n="astir-mounted-carried-sheathed"></span></div>
+      <div class="astir-mounted-carried-sheathed"><span data-i18n="astir-mounted-carried-sheathed"></span></div>
+    </div>
+    <div class="ascent-astir-section ace-text type-ascent">
+      <div class="astir-name-tier-box"><span data-i18n="astir-name"></span></div>
+      <div class="astir-approach"><span data-i18n="astir-approach"></span></div>
+      <div class="astir-generator"><span data-i18n="astir-generator"></span></div>
+      <div class="astir-drive"><span data-i18n="astir-drive"></span></div>
+      <div class="astir-reserve"><span data-i18n="astir-reserve"></span></div>
+      <div class="astir-overheating"><span data-i18n="astir-overheating"></span></div>
+      <div class="astir-frame"><span data-i18n="astir-frame"></span></div>
+      <div class="astir-system"><span data-i18n="astir-system"></span></div>
+      <div class="astir-description"><span data-i18n="astir-description"></span></div>
+      <div class="astir-special-move"><span data-i18n="astir-special-move"></span></div>
+      <div class="astir-mounted-carried-sheathed"><span data-i18n="astir-mounted-carried-sheathed"></span></div>
+      <div class="astir-mounted-carried-sheathed"><span data-i18n="astir-mounted-carried-sheathed"></span></div>
+    </div>
+  </div>
+  <div class="col100 flex">
+    <!-- Clocks and Notes -->
+    <div class="col45 flex-wrap left-column">
       <!-- Clocks-->
       <div class="col100 clocks def-margin free-repcontrol">
         <div class="specialheader label" data-i18n="clocks"></div>
         <fieldset class="repeating_clock">
-          <input class="size" type="hidden" name="attr_size" value=""/>
-          <div class="auto-expand smallcaps"><span name="attr_name"></span>
-            <textarea spellcheck="false" name="attr_name" data-i18n-placeholder="clock_name"></textarea>
-          </div>
-          <button class="broadcast-button" type="roll" name="roll_Show" value="&{template:bitd-broadcast} {{charname=@{character_name}}} {{title=@{name}}} {{clock=1}} {{clocksize=@{size}}} {{clockprogress=@{progress}}} {{charimage=@{chat_image}}}" data-i18n-title="send_details_to_chat">:</button>
-          <div class="size-choice">
-            <label class="text-button">
-              <input type="radio" name="attr_size" value="4"/><span>4</span>
-            </label>
-            <label class="text-button">
-              <input type="radio" name="attr_size" value="6"/><span>6</span>
-            </label>
-            <label class="text-button">
-              <input type="radio" name="attr_size" value="8"/><span>8</span>
-            </label>
-            <label class="text-button">
-              <input type="radio" name="attr_size" value="10"/><span>10</span>
-            </label>
-            <label class="text-button">
-              <input type="radio" name="attr_size" value="12"/><span>12</span>
-            </label>
-          </div>
-          <div class="clock-container">
-            <div class="spoke-0 all"></div>
-            <div class="spoke-30 sheet-12clock"></div>
-            <div class="spoke-45 sheet-8clock"></div>
-            <div class="spoke-36 sheet-10clock"></div>
-            <div class="spoke-60 sheet-6clock sheet-12clock"></div>
-            <div class="spoke-72 sheet-10clock"></div>
-            <div class="spoke-90 sheet-4clock sheet-8clock sheet-12clock"></div>
-            <div class="spoke-108 sheet-10clock"></div>
-            <div class="spoke-120 sheet-6clock sheet-12clock"></div>
-            <div class="spoke-135 sheet-8clock"></div>
-            <div class="spoke-144 sheet-10clock"></div>
-            <div class="spoke-150 sheet-12clock"></div>
-            <input class="zero input-progress" type="radio" name="attr_progress" value="0" checked="checked"/><span></span>
-            <input class="input-progress all" type="radio" name="attr_progress" value="1"/>
-            <input class="input-progress all" type="radio" name="attr_progress" value="2"/>
-            <input class="input-progress all" type="radio" name="attr_progress" value="3"/>
-            <input class="input-progress all" type="radio" name="attr_progress" value="4"/>
-            <input class="input-progress sheet-6clock sheet-8clock sheet-10clock sheet-12clock" type="radio" name="attr_progress" value="5"/>
-            <input class="input-progress sheet-6clock sheet-8clock sheet-10clock sheet-12clock" type="radio" name="attr_progress" value="6"/>
-            <input class="input-progress sheet-8clock sheet-10clock sheet-12clock" type="radio" name="attr_progress" value="7"/>
-            <input class="input-progress sheet-8clock sheet-10clock sheet-12clock" type="radio" name="attr_progress" value="8"/>
-            <input class="input-progress sheet-10clock sheet-12clock" type="radio" name="attr_progress" value="9"/>
-            <input class="input-progress sheet-10clock sheet-12clock" type="radio" name="attr_progress" value="10"/>
-            <input class="input-progress sheet-12clock" type="radio" name="attr_progress" value="11"/>
-            <input class="input-progress sheet-12clock" type="radio" name="attr_progress" value="12"/>
-            <div class="clock"></div>
+          <div class="clock-block flex">
+            <div class="clock-name-row flex">
+              <input class="size" type="hidden" name="attr_size" value=""/>
+              <div class="auto-expand smallcaps"><span name="attr_name"></span>
+                <textarea class="clock-label" spellcheck="false" name="attr_name" data-i18n-placeholder="clock_name"></textarea>
+              </div>
+              <div class="size-choice">
+                <label class="text-button">
+                  <input type="radio" name="attr_size" value="4"/><span>4</span>
+                </label>
+                <label class="text-button">
+                  <input type="radio" name="attr_size" value="6"/><span>6</span>
+                </label>
+                <label class="text-button">
+                  <input type="radio" name="attr_size" value="8"/><span>8</span>
+                </label>
+                <label class="text-button">
+                  <input type="radio" name="attr_size" value="10"/><span>10</span>
+                </label>
+                <label class="text-button">
+                  <input type="radio" name="attr_size" value="12"/><span>12</span>
+                </label>
+              </div>
+              <div class="clock-container">
+                <div class="spoke-0 all"></div>
+                <div class="spoke-30 sheet-12clock"></div>
+                <div class="spoke-45 sheet-8clock"></div>
+                <div class="spoke-36 sheet-10clock"></div>
+                <div class="spoke-60 sheet-6clock sheet-12clock"></div>
+                <div class="spoke-72 sheet-10clock"></div>
+                <div class="spoke-90 sheet-4clock sheet-8clock sheet-12clock"></div>
+                <div class="spoke-108 sheet-10clock"></div>
+                <div class="spoke-120 sheet-6clock sheet-12clock"></div>
+                <div class="spoke-135 sheet-8clock"></div>
+                <div class="spoke-144 sheet-10clock"></div>
+                <div class="spoke-150 sheet-12clock"></div>
+                <input class="zero input-progress" type="radio" name="attr_progress" value="0" checked="checked"/><span></span>
+                <input class="input-progress all" type="radio" name="attr_progress" value="1"/>
+                <input class="input-progress all" type="radio" name="attr_progress" value="2"/>
+                <input class="input-progress all" type="radio" name="attr_progress" value="3"/>
+                <input class="input-progress all" type="radio" name="attr_progress" value="4"/>
+                <input class="input-progress sheet-6clock sheet-8clock sheet-10clock sheet-12clock" type="radio" name="attr_progress" value="5"/>
+                <input class="input-progress sheet-6clock sheet-8clock sheet-10clock sheet-12clock" type="radio" name="attr_progress" value="6"/>
+                <input class="input-progress sheet-8clock sheet-10clock sheet-12clock" type="radio" name="attr_progress" value="7"/>
+                <input class="input-progress sheet-8clock sheet-10clock sheet-12clock" type="radio" name="attr_progress" value="8"/>
+                <input class="input-progress sheet-10clock sheet-12clock" type="radio" name="attr_progress" value="9"/>
+                <input class="input-progress sheet-10clock sheet-12clock" type="radio" name="attr_progress" value="10"/>
+                <input class="input-progress sheet-12clock" type="radio" name="attr_progress" value="11"/>
+                <input class="input-progress sheet-12clock" type="radio" name="attr_progress" value="12"/>
+                <div class="clock"></div>
+              </div>
+            </div>
+            <div class="clock-button-row flex">
+              <div class="stat-block gravity-stat-block">
+                <input type="number" name="attr_gravity" class="stats" min="-3" max="3" value="0"/>
+                <button type="roll" class="stat-button" name="roll_gravity" value="&{template:stat_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{gravity}]]}}">
+                  <span data-i18n="gravity"></span>
+                </button>
+              </div>
+              <button class="broadcast-button" type="roll" name="roll_Show" value="&{template:clock-broadcast} {{charname=@{character_name}}} {{title=@{name}}} {{clock=1}} {{clocksize=@{size}}} {{clockprogress=@{progress}}}">
+                <span class="broadcast-button-label" data-i18n="clock-display-button-label"></span>
+              </button>
+            </div>
           </div>
         </fieldset>
       </div>
+    </div>
+    <div class="col55 flex right-column">
       <textarea class="notes" spellcheck="false" name="attr_notes" data-i18n-placeholder="notes"></textarea>
     </div>
   </div>
 </div>
-<rolltemplate class="sheet-rolltemplate-bitd-broadcast">
-  <div>{{#charimage}}{{^clock}}
-    <div class="char-image">[Image]({{charimage}})</div>{{/clock}}{{/charimage}}
-    <div class="header{{#charimage}}{{^clock}} narrow{{/clock}}{{/charimage}}">
-      <div>{{charname}}</div>
-      <div>{{type}}</div>
-    </div>{{#content}}
+<rolltemplate class="sheet-rolltemplate-stat_rolls">
+  <div class="template-container">
+    <div class="section-title">
+      <div>{{charname}}:</div>
+      {{#stat_roll}}
+      <div class="stat-roll">{{stat_roll}}</div>
+      {{/stat_roll}}
+      {{#rollLess() stat_roll 7}}
+      <span>Failure</span>
+      {{/rollLess() stat_roll 7}}
+      {{#rollGreater() stat_roll 9}}
+      <span>Success</span>
+      {{/rollGreater() stat_roll 9}}
+      {{#rollBetween() stat_roll 7 9}}
+      <span class={{effect}} data-i18n={{effect}}></span>
+      {{/rollBetween() stat_roll 7 9}}
+    </div>
+  </div>
+</rolltemplate>
+<rolltemplate class="sheet-rolltemplate-move_rolls">
+  <div class="template-container">
+    <div class="section-title">
+      <div>{{charname}}:</div>
+      {{#mv_roll}}
+      <div class="mv-roll">{{mv_roll}}</div>
+      {{/mv_roll}}
+      {{#rollLess() mv_roll 7}}
+      <span>Failure</span>
+      {{/rollLess() mv_roll 7}}
+      {{#rollGreater() mv_roll 9}}
+      <span>Success</span>
+      {{/rollGreater() mv_roll 9}}
+      {{#rollBetween() mv_roll 7 9}}
+      <span class={{effect}} data-i18n={{effect}}></span>
+      {{/rollBetween() mv_roll 7 9}}
+    </div>
+  </div>
+</rolltemplate>
+<rolltemplate class="sheet-rolltemplate-move_description_rolls">
+  <div class="template-container">
+    <div class="section-title">
+      {{#premove}}
+      <div>
+        <span data-i18n="{{move}}-title"></span>
+        <p data-i18n="{{move}}-description"></p>
+      </div>
+      {{/premove}}
+      {{#custmove}}
+      <div>
+        <span>{{mv_name}}</span>
+        <p>{{mv_description}}</p>
+      </div>
+      {{/custmove}}
+    </div>
+  </div>
+</rolltemplate>
+<rolltemplate class="sheet-rolltemplate-clock-broadcast">
+  <div>
+    <div>{{charname}}</div>
+    <div>{{type}}</div>{{#content}}
     <div class="title">{{title}}</div>
     <div class="content">{{content}}</div>{{/content}}{{#clock}}
     <div class="flex">
@@ -343,32 +667,6 @@
         <div class="spoke-150"></div>
       </div>
       <div class="title">{{title}}</div>
-    </div>{{/clock}}{{#harm}}
-    <div class="title" data-i18n="harm"></div>
-    <table class="harm">
-      <tr>
-        <td>3</td>
-        <td>
-          <div class="harm-inner">{{harm3}}</div>
-        </td>
-        <td data-i18n="need_help"></td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>{{#harm2_1}}
-          <div class="harm-inner">{{harm2_1}}</div>{{/harm2_1}}{{#harm2_2}}
-          <div class="harm-inner">{{harm2_2}}</div>{{/harm2_2}}
-        </td>
-        <td data-i18n="minus1d"></td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>{{#harm1_1}}
-          <div class="harm-inner">{{harm1_1}}</div>{{/harm1_1}}{{#harm1_2}}
-          <div class="harm-inner">{{harm1_2}}</div>{{/harm1_2}}
-        </td>
-        <td data-i18n="less_effect"></td>
-      </tr>
-    </table>{{/harm}}
+    </div>{{/clock}}
   </div>
 </rolltemplate>
