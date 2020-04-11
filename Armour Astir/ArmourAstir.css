@@ -59,8 +59,11 @@
     opacity: 0.7;
 }
 
-.charsheet input[type="text"], .charsheet textarea {
+.charsheet input[type=text], .charsheet textarea {
   background: transparent;
+  color: black;
+  margin: 0;
+  padding: 5px;
 }
 
 .charsheet textarea {
@@ -84,6 +87,7 @@
   font-weight: bold;
   font-size: 16px;
   text-align: center;
+  padding: 0px;
 }
 
 .charsheet input[type=checkbox],
@@ -295,6 +299,7 @@ input[type=number].sheet-stats  {
   background-color: rgba(0, 0, 0, 0);
   font-weight: bold;
   height: auto;
+  padding: 2px;
 }
 
 .sheet-stat-block {
@@ -306,6 +311,10 @@ input[type=number].sheet-stats  {
 
 .sheet-stat-button {
   border: none;
+}
+
+button[type=roll].sheet-stat-button:hover > span.sheet-stat-label {
+  color: rgb(100, 100, 100);
 }
 
 .sheet-charstyle-section {
@@ -329,6 +338,7 @@ input[type=number].sheet-stats  {
 
 .sheet-style-input {
   border-bottom: solid 1px;
+  width: 100%;
 }
 
 .sheet-style-custom-box {
@@ -571,6 +581,13 @@ input.sheet-risk, input.sheet-peril {
     flex-wrap: wrap;
     align-content: flex-start;
     align-items: flex-start;
+}
+
+.sheet-flex-horiz {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .sheet-flex-center {
@@ -837,9 +854,24 @@ textarea.sheet-smallcaps {
   flex-direction: column;
 }
 
+input[type=text].sheet-repcontrol_edit {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+input[type=checkbox].sheet-hide-descriptions-checkbox {
+  opacity: 1;
+}
+
+input[value="on"].sheet-hide-descriptions-checkbox ~ div > p.sheet-move-description,
+input[value="on"].sheet-hide-descriptions-checkbox-additional ~ .repcontainer > .repitem > .sheet-additional-moves-container > .sheet-movedesc > textarea.sheet-move-description {
+  display: none;
+}
+
 .sheet-basic-moves {
   display: flex;
   flex-direction: column;
+  padding-right: 10px;
 }
 
 .sheet-playbook-moves {
@@ -855,6 +887,437 @@ textarea.sheet-move-description {
   margin-bottom: 0px;
 }
 
+.sheet-astir-card {
+  display: grid;
+  grid-template-columns: repeat(20, 1fr [col-start]);
+  grid-template-rows: repeat(13, 22px [row-start]);
+  border: solid 3px;
+}
+
+input.sheet-upcase,
+textarea.sheet-upcase,
+span.sheet-upcase {
+  text-transform: uppercase;
+}
+
+.sheet-astir-box {
+  border: solid 2px;
+}
+
+.sheet-astir-name-tier-box {
+  grid-column: 1 / span 12;
+  grid-row: 1 / span 2;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr [col-start]);
+  grid-template-rows: 1fr;
+}
+
+.sheet-astir-name-input-box {
+  height: 100%;
+  grid-column: 1 / span 5;
+  border: none;
+}
+
+input.sheet-astir-name-input {
+  height: 100%;
+  font-size: 20px;
+  border: none;
+  padding: 0px;
+}
+
+.sheet-astir-tier-input-box {
+  grid-column: 6 / span 2;
+}
+
+input.sheet-astir-tier-input {
+  width: 100%;
+  height: 100%;
+  text-justify: end;
+  font-size: 12px;
+  border: none;
+  padding: 0px;
+}
+
+.sheet-astir-approach {
+  grid-column: 11 / span 2;
+  grid-row: 2;
+}
+
+input.sheet-astir-approach-input {
+  width: 96%;
+  height: 75%;
+  font-weight: bold;
+  border: none;
+  padding: 0px;
+}
+
+.sheet-astir-core {
+  grid-column: 13 / span 4;
+  grid-row: 1 / span 2;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr [row-start]);
+}
+
+.sheet-astir-core-label-box {
+  grid-row: 1;
+  border-bottom: solid 2px;
+  text-align: center;
+}
+
+.sheet-astir-core-label {
+  font-weight: bold;
+}
+
+.sheet-astir-core-input-box {
+  grid-row: 2;
+}
+
+input.sheet-astir-core-input {
+  text-align: center;
+  border: none;
+  width: 100%;
+  padding: 0px;
+}
+
+.sheet-astir-generator {
+  grid-column: 13 / span 4;
+  grid-row: 1;
+}
+
+input.sheet-astir-generator-input {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  border: none;
+  font-weight: bold;
+  padding: 0px;
+}
+
+.sheet-astir-mana,
+.sheet-astir-drive {
+  grid-column: 17 / span 4;
+  grid-row: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr [col-start]);
+}
+
+.sheet-astir-mana-label-box {
+  grid-column: 1;
+  text-align: center;
+  border-right: solid 2px;
+  font-weight: bold;
+}
+
+.sheet-astir-mana-input-box {
+  grid-column: 2;
+  text-align: center;
+}
+
+input.sheet-astir-mana-input {
+  height: 85%;
+}
+
+.sheet-astir-drive-label-box {
+  border-right: solid 2px;
+  grid-column: 1;
+  text-align: center;
+  font-weight: bold;
+}
+
+.sheet-astir-drive-input-box {
+  grid-column: 2;
+  text-align: center;
+}
+
+input.sheet-astir-drive-input {
+  border: none;
+  padding: 0px;
+  margin: 0px;
+  height: 90%;
+}
+
+.sheet-astir-reserve {
+  grid-column: 13 / span 4;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr [col-start]);
+}
+
+.sheet-astir-reserve-label-box {
+  grid-column: 1 / span 3;
+  border-right: solid 2px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.sheet-astir-reserve-input-box {
+  grid-column: 4;
+  height: 90%;
+}
+
+input.sheet-astir-reserve-input {
+  height: 90%;
+}
+
+.sheet-astir-overheating {
+  grid-column: 17 / span 4;
+  grid-row: 2;
+  text-align: center;
+  font-weight: bold;
+}
+
+input[type=checkbox].sheet-astir-overheating-checkbox {
+  opacity: 1;
+}
+
+.sheet-astir-parta,
+.sheet-astir-frame {
+  grid-column: 1 / span 10;
+  grid-row: 3 / span 3;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr [row-start]);
+  text-align: center;
+}
+
+.sheet-astir-partb,
+.sheet-astir-system {
+  grid-column: 11 / span 10;
+  grid-row: 3 / span 3;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr [row-start]);
+}
+
+.sheet-astir-part-label-box {
+  grid-row: 1;
+  width: 100%;
+  border-bottom: solid 2px;
+}
+
+input.sheet-astir-part-label {
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  border: none;
+  padding: 0px;
+}
+
+.sheet-astir-part-description-box {
+  grid-row: 2 / span 2;
+  width: 100%;
+}
+
+textarea.sheet-astir-part-description {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  border: none;
+  resize: none;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.sheet-astir-description {
+  grid-column: 1 / span 15;
+  grid-row: 6 / span 6;
+}
+
+textarea.sheet-astir-description-input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  resize: none;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.sheet-astir-special-move-advent {
+  grid-column: 16 / span 5;
+  grid-row: 6 / span 6;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(6, 1fr [row-start]);
+}
+
+.sheet-astir-special-move-label-box {
+  grid-column: 1;
+  grid-row: 1;
+  border-bottom: solid 2px;
+}
+
+input.sheet-astir-special-move-label {
+  font-weight: bold;
+  width: 100%;
+  border: none;
+  text-align: center;
+  padding: 0px;
+}
+
+input[type=checkbox].sheet-edit-move-label {
+  z-index: 6;
+  width: 24px;
+  height: 16px;
+  grid-row: 1;
+  grid-column: 1;
+  margin: 2px;
+  padding: 2px;
+}
+
+span.sheet-roll-move-label-text {
+  background-color: white;
+}
+
+span.sheet-edit-move-label-text {
+  background-color: red;
+  color: white;
+}
+
+span.sheet-edit-move-label-text,
+span.sheet-roll-move-label-text {
+  font-size: 8px;
+  border: solid 1px black;
+  border-radius: 2px;
+  width: 24px;
+  height: 16px;
+  position: absolute;
+  grid-row: 1;
+  grid-column: 1;
+  margin: 2px;
+  z-index: 5;
+  padding: 2px;
+}
+
+input[type=checkbox].sheet-edit-move-label:hover ~ span.sheet-roll-move-label-text {
+  background-color: rgb(88, 88, 88);
+  color: white;
+}
+
+input[type=checkbox].sheet-edit-move-label:hover ~ span.sheet-edit-move-label-text {
+  background-color: rgb(180, 0, 0);
+}
+
+input[type=checkbox].sheet-edit-move-label:checked ~ .sheet-astir-special-move-roll-button-box,
+input[type=checkbox].sheet-edit-move-label:not(:checked) ~ span.sheet-edit-move-label-text,
+input[type=checkbox].sheet-edit-move-label:checked ~ span.sheet-roll-move-label-text {
+  display: none;
+}
+
+.sheet-astir-special-move-roll-button-box {
+  grid-column: 1;
+  grid-row: 1;
+  border-bottom: solid 2px;
+}
+
+button[type=roll].sheet-astir-special-move-button {
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  height: 19px;
+  opacity: 0.25;
+  z-index: 4;
+  background-color: black;
+}
+
+.sheet-astir-special-move-description-box-advent {
+  grid-column: 1;
+  grid-row: 2 / span 5;
+}
+
+textarea.sheet-astir-special-move-description {
+  border: none;
+  height: 100%;
+  resize: none;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.sheet-astir-special-move-ascent {
+  grid-column: 16 / span 5;
+  grid-row: 6 / span 5;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(5, 1fr [row-start]);
+}
+
+.sheet-astir-special-move-description-box-ascent {
+  grid-column: 1;
+  grid-row: 2 / span 4;
+}
+
+.sheet-astir-mod {
+  grid-column: 16 / span 5;
+  grid-row: 11 / span 4;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(4, 1fr [row-start]);
+}
+
+.sheet-astir-mod-label-box {
+  grid-row: 1;
+  border-bottom: solid 2px;
+}
+
+input.sheet-astir-mod-label {
+  font-weight: bold;
+  border: none;
+  text-align: center;
+  padding: 0px;
+}
+
+.sheet-astir-mod-description-box {
+  grid-row: 2 / span 3;
+}
+
+textarea.sheet-astir-mod-description {
+  width: 100%;
+  height: 100%;
+  border: none;
+  resize: none;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.sheet-astir-mounted-carried-sheathed-advent {
+  grid-column: 1 / span 20;
+  display: grid;
+  grid-template-columns: repeat(20, 1fr [col-start]);
+}
+
+.sheet-astir-mounted-carried-sheathed-select-box {
+  grid-column: 1 / span 4;
+  border-right: solid 2px;
+}
+
+select.sheet-astir-mounted-carried-sheathed-select {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.sheet-astir-weapon-input-box-advent {
+  grid-column: 5 / span 16;
+}
+
+.sheet-astir-weapon-input-box-ascent {
+  grid-column: 5 / span 11;
+}
+
+input.sheet-astir-weapon-input {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  border: none;
+  text-align: center;
+}
+
+.sheet-astir-mounted-carried-sheathed-ascent {
+  grid-column: 1 / span 15;
+  display: grid;
+  grid-template-columns: repeat(15, 1fr [col-start]);
+}
 
 /* CLOCKS */
 
@@ -949,6 +1412,7 @@ textarea.sheet-move-description {
 .sheet-gravity-stat-block {
   position: absolute;
   transform: translateY(-26px);
+  z-index: 2;
 }
 
 .sheet-broadcast-button {
@@ -1646,6 +2110,19 @@ button[type=roll].sheet-rollbutton {
     padding: 0;
 }
 
+button[type=roll].sheet-move-button {
+  min-width: 170px;
+  text-align: left;
+  border-radius: 3px;
+  border: none;
+  background-color: rgba(129, 228, 253, 0.829);
+  margin-bottom: 5px;
+}
+
+button[type=roll].sheet-move-button:hover {
+  background-color: rgb(75, 159, 180);
+}
+
 .sheet-attribute-title button[type=roll].sheet-rollbutton {
     max-width: calc(100% - 97px);
     line-height: inherit;
@@ -1791,23 +2268,6 @@ label.sheet-generatebutton:hover input+span {
 
 .withoutavatars .sheet-rolltemplate-clock-broadcast {
     margin-left: -15px;
-}
-
-
-/* Container */
-
-.sheet-rolltemplate-bitd {
-    /* Background images */
-    /* Images */
-    /* Header */
-    /* Image */
-    /* Title */
-    /* Position and Effect */
-    /* Dice */
-    /* Zerodice dice holder */
-    /* Zerodice text */
-    /* Inlinerolls */
-    /* Instructions and Notes */
 }
 
 .sheet-rolltemplate-bitd .sheet-holder {
