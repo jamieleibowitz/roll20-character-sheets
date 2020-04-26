@@ -380,14 +380,16 @@ input.sheet-risk, input.sheet-peril {
   padding: 2px;
 }
 
-.sheet-rolltemplate-move_rolls div.sheet-template-container {
+.sheet-rolltemplate-move_rolls div.sheet-template-container,
+.sheet-rolltemplate-stat_rolls div.sheet-template-container {
   color: black;
   border: none;
   background: white;
   font-family: 'Times New Roman', Times, serif;
 }
 
-.sheet-rolltemplate-move_rolls .inlinerollresult {
+.sheet-rolltemplate-move_rolls .inlinerollresult,
+.sheet-rolltemplate-stat_rolls .inlinerollresult {
   border: none !important;
   background-color: transparent;
   font-weight: normal;
