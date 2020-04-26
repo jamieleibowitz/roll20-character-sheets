@@ -132,6 +132,8 @@
   "astir-mounted": "Mounted",
   "astir-carried": "Carried",
   "astir-sheathed": "Sheathed",
+  "astir-matrix": "Matrix",
+  "astir-rack": "Rack",
   "astir-generator": "Generator",
   "astir-drive": "Drive",
   "astir-reserve": "Reserve",
