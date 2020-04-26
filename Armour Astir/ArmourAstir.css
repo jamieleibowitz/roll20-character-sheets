@@ -381,7 +381,8 @@ input.sheet-risk, input.sheet-peril {
 }
 
 .sheet-rolltemplate-move_rolls div.sheet-template-container,
-.sheet-rolltemplate-stat_rolls div.sheet-template-container {
+.sheet-rolltemplate-stat_rolls div.sheet-template-container,
+.sheet-rolltemplate-move_description_rolls div.sheet-template-container {
   color: black;
   border: none;
   background: white;

@@ -76,7 +76,7 @@
     <div class="crew-stat-block">
       <div class="stat-block">
         <input type="number" name="attr_crew" class="stats" min="-3" max="3" value="0"/>
-        <button type="roll" class="stat-button" name="roll_crew" value="&{template:stat_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{crew}]]}}">
+        <button type="roll" class="stat-button" name="roll_crew" value="&{template:stat_rolls} {{charname=@{character_name}}} {{title=Crew}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{crew}]]}}">
           <span data-i18n="crew"></span>
         </button>
       </div>
@@ -161,43 +161,43 @@
         <input class="playbook-selection" type="hidden" name="attr_playbook-dropdown" value=""/>
         <div class="stat-block">
           <input type="number" name="attr_defy" class="stats" min="-3" max="3" value="0"/>
-          <button type="roll" class="stat-button" name="roll_defy" value="&{template:stat_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{defy}]]}}">
+          <button type="roll" class="stat-button" name="roll_defy" value="&{template:stat_rolls} {{charname=@{character_name}}} {{title=Defy}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{defy}]]}}">
             <span class="stat-label" data-i18n="defy"></span>
           </button>
         </div>
         <div class="stat-block">
           <input type="number" name="attr_sense" class="stats" min="-3" max="3" value="0"/>
-          <button type="roll" class="stat-button" name="roll_sense" value="&{template:stat_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{sense}]]}}">
+          <button type="roll" class="stat-button" name="roll_sense" value="&{template:stat_rolls} {{charname=@{character_name}}} {{title=Sense}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{sense}]]}}">
             <span class="stat-label" data-i18n="sense"></span>
           </button>
         </div>
         <div class="stat-block">
           <input type="number" name="attr_know" class="stats" min="-3" max="3" value="0"/>
-          <button type="roll" class="stat-button" name="roll_know" value="&{template:stat_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{know}]]}}">
+          <button type="roll" class="stat-button" name="roll_know" value="&{template:stat_rolls} {{charname=@{character_name}}} {{title=Know}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{know}]]}}">
             <span class="stat-label" data-i18n="know"></span>
           </button>
         </div>
         <div class="stat-block">
           <input type="number" name="attr_clash" class="stats" min="-3" max="3" value="0"/>
-          <button type="roll" class="stat-button" name="roll_clash" value="&{template:stat_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{clash}]]}}">
+          <button type="roll" class="stat-button" name="roll_clash" value="&{template:stat_rolls} {{charname=@{character_name}}} {{title=Clash}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{clash}]]}}">
             <span class="stat-label" data-i18n="clash"></span>
           </button>
         </div>
         <div class="stat-block">
           <input type="number" name="attr_talk" class="stats" min="-3" max="3" value="0"/>
-          <button type="roll" class="stat-button" name="roll_talk" value="&{template:stat_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{talk}]]}}">
+          <button type="roll" class="stat-button" name="roll_talk" value="&{template:stat_rolls} {{charname=@{character_name}}} {{title=Talk}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{talk}]]}}">
             <span class="stat-label" data-i18n="talk"></span>
           </button>
         </div>
         <div class="stat-block type-advent channeler-text">
           <input type="number" name="attr_channel" class="stats" min="-3" max="3" value="0"/>
-          <button type="roll" class="stat-button" name="roll_channel" value="&{template:stat_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{channel}]]}}">
+          <button type="roll" class="stat-button" name="roll_channel" value="&{template:stat_rolls} {{charname=@{character_name}}} {{title=Channel}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{channel}]]}}">
             <span class="stat-label" data-i18n="channel"></span>
           </button>
         </div>
         <div class="stat-block type-ascent ace-text">
           <input type="number" name="attr_zeal" class="stats" min="-3" max="3" value="0"/>
-          <button type="roll" class="stat-button" name="roll_zeal" value="&{template:stat_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{zeal}]]}}">
+          <button type="roll" class="stat-button" name="roll_zeal" value="&{template:stat_rolls} {{charname=@{character_name}}} {{title=Zeal}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{zeal}]]}}">
             <span class="stat-label" data-i18n="zeal"></span>
           </button>
         </div>
@@ -632,7 +632,7 @@
             <div class="clock-button-row flex">
               <div class="stat-block gravity-stat-block">
                 <input type="number" name="attr_gravity" class="stats" min="0" max="3" value="0"/>
-                <button type="roll" class="stat-button" name="roll_gravity" value="&{template:stat_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{gravity}]]}}">
+                <button type="roll" class="stat-button" name="roll_gravity" value="&{template:stat_rolls} {{charname=@{character_name}}} {{title=Gravity: @{name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{gravity}]]}}">
                   <span data-i18n="gravity"></span>
                 </button>
               </div>
@@ -653,6 +653,7 @@
   <div class="template-container">
     <div class="section-title">
       <div>{{charname}}:</div>
+      <div>{{title}}</div>
       {{#stat_roll}}
       <div class="stat-roll">{{stat_roll}}</div>
       {{/stat_roll}}
