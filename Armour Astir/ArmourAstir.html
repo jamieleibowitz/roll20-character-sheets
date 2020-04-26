@@ -76,7 +76,7 @@
     <div class="crew-stat-block">
       <div class="stat-block">
         <input type="number" name="attr_crew" class="stats" min="-3" max="3" value="0"/>
-        <button type="roll" class="stat-button" name="roll_crew" value="&{template:stat_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{crew}]]}}">
+        <button type="roll" class="stat-button" name="roll_crew" value="&{template:stat_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{crew}]]}}">
           <span data-i18n="crew"></span>
         </button>
       </div>
@@ -87,18 +87,25 @@
     <div class="col55 flex-wrap name-ideals-block">
       <!-- Header text fields-->
       <div class="col100 header flex">
-        <label class="col100">
-          <input type="text" spellcheck="false" name="attr_name"/>
+        <div class="col100">
+          <input type="text" spellcheck="false" name="attr_character_name"/>
           <div class="label text" data-i18n="name"></div>
-        </label>
-        <label class="col100">
+        </div>
+        <div class="col100">
+          <input class="playbook-selection" type="hidden" name="attr_playbook-dropdown" value=""/>
           <input class="ideal" type="text" spellcheck="false" name="attr_ideal1"/>
-          <div class="label text" data-i18n="ideal1"></div>
+          <div class="label text ideal-normal" data-i18n="ideal1"></div>
+          <div class="label text paradigm-text" data-i18n="tenet1"></div>
+          <div class="label text haunted-text" data-i18n="memory1"></div>
           <input class="ideal" type="text" spellcheck="false" name="attr_ideal2"/>
-          <div class="label text" data-i18n="ideal2"></div>
+          <div class="label text ideal-normal" data-i18n="ideal2"></div>
+          <div class="label text paradigm-text" data-i18n="tenet2"></div>
+          <div class="label text haunted-text" data-i18n="memory2"></div>
           <input class="ideal" type="text" spellcheck="false" name="attr_ideal3"/>
-          <div class="label text" data-i18n="ideal3"></div>
-        </label>
+          <div class="label text ideal-normal" data-i18n="ideal3"></div>
+          <div class="label text paradigm-text" data-i18n="tenet3"></div>
+          <div class="label text haunted-text" data-i18n="memory3"></div>
+        </div>
       </div>
     </div>
     <div class="col45 flex-wrap stat-style-column">
@@ -154,43 +161,43 @@
         <input class="playbook-selection" type="hidden" name="attr_playbook-dropdown" value=""/>
         <div class="stat-block">
           <input type="number" name="attr_defy" class="stats" min="-3" max="3" value="0"/>
-          <button type="roll" class="stat-button" name="roll_defy" value="&{template:stat_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{defy}]]}}">
+          <button type="roll" class="stat-button" name="roll_defy" value="&{template:stat_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{defy}]]}}">
             <span class="stat-label" data-i18n="defy"></span>
           </button>
         </div>
         <div class="stat-block">
           <input type="number" name="attr_sense" class="stats" min="-3" max="3" value="0"/>
-          <button type="roll" class="stat-button" name="roll_sense" value="&{template:stat_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{sense}]]}}">
+          <button type="roll" class="stat-button" name="roll_sense" value="&{template:stat_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{sense}]]}}">
             <span class="stat-label" data-i18n="sense"></span>
           </button>
         </div>
         <div class="stat-block">
           <input type="number" name="attr_know" class="stats" min="-3" max="3" value="0"/>
-          <button type="roll" class="stat-button" name="roll_know" value="&{template:stat_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{know}]]}}">
+          <button type="roll" class="stat-button" name="roll_know" value="&{template:stat_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{know}]]}}">
             <span class="stat-label" data-i18n="know"></span>
           </button>
         </div>
         <div class="stat-block">
           <input type="number" name="attr_clash" class="stats" min="-3" max="3" value="0"/>
-          <button type="roll" class="stat-button" name="roll_clash" value="&{template:stat_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{clash}]]}}">
+          <button type="roll" class="stat-button" name="roll_clash" value="&{template:stat_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{clash}]]}}">
             <span class="stat-label" data-i18n="clash"></span>
           </button>
         </div>
         <div class="stat-block">
           <input type="number" name="attr_talk" class="stats" min="-3" max="3" value="0"/>
-          <button type="roll" class="stat-button" name="roll_talk" value="&{template:stat_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{talk}]]}}">
+          <button type="roll" class="stat-button" name="roll_talk" value="&{template:stat_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{talk}]]}}">
             <span class="stat-label" data-i18n="talk"></span>
           </button>
         </div>
         <div class="stat-block type-advent channeler-text">
           <input type="number" name="attr_channel" class="stats" min="-3" max="3" value="0"/>
-          <button type="roll" class="stat-button" name="roll_channel" value="&{template:stat_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{channel}]]}}">
+          <button type="roll" class="stat-button" name="roll_channel" value="&{template:stat_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{channel}]]}}">
             <span class="stat-label" data-i18n="channel"></span>
           </button>
         </div>
         <div class="stat-block type-ascent ace-text">
           <input type="number" name="attr_zeal" class="stats" min="-3" max="3" value="0"/>
-          <button type="roll" class="stat-button" name="roll_zeal" value="&{template:stat_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{zeal}]]}}">
+          <button type="roll" class="stat-button" name="roll_zeal" value="&{template:stat_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{zeal}]]}}">
             <span class="stat-label" data-i18n="zeal"></span>
           </button>
         </div>
@@ -252,6 +259,14 @@
       </div>
     </div>
   </div>
+  <div class="col100 flex style-block catchphrase pilot-text">
+    <div class="col30 catchphrase-label-box">
+      <span class="catchphrase-label style-label flex" data-i18n="catchphrase-label"></span>
+    </div>
+    <div class="col70 catchphrase-input-box">
+      <input class="style-input" type="text" name="attr_catchphrase"/>
+    </div> 
+  </div>
   <!-- Gear and Dangers Section -->
   <div class="col100 flex-wrap gear-and-danger-section">
     <div class="col50 gear-section">
@@ -306,79 +321,79 @@
         <input class="playbook-selection" type="hidden" name="attr_playbook-dropdown" value=""/>
         <input class="hide-descriptions-checkbox" type="hidden" name="attr_hide_descriptions"/>
         <div class="move-weather-the-storm">
-          <button type="roll" class="move-button" name="roll_weather_the_storm" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{wts_stat_query}]]}}">
+          <button type="roll" class="move-button" name="roll_weather_the_storm" value="&{template:move_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{wts_stat_query}]]}}">
             <span data-i18n="weather-the-storm-title"></span>
           </button>
           <p class="move-description" data-i18n="weather-the-storm-description"></p>
         </div>
         <div class="move-read-the-room">
-          <button type="roll" class="move-button" name="roll_read_the_room" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{sense}]]}}">
+          <button type="roll" class="move-button" name="roll_read_the_room" value="&{template:move_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{sense}]]}}">
             <span data-i18n="read-the-room-title"></span>
           </button>
           <p class="move-description" data-i18n="read-the-room-description"></p>
         </div>
         <div class="move-dispel-uncertainties">
-          <button type="roll" class="move-button" name="roll_dispel_uncertainties" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{know}]]}}">
+          <button type="roll" class="move-button" name="roll_dispel_uncertainties" value="&{template:move_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{know}]]}}">
             <span data-i18n="dispel-uncertainties-title"></span>
           </button>
           <p class="move-description" data-i18n="dispel-uncertainties-description"></p>
         </div>
         <div class="move-help-or-hinder">
-          <button type="roll" class="move-button" name="roll_help_or_hinder" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{gravity_query}]]}}">
+          <button type="roll" class="move-button" name="roll_help_or_hinder" value="&{template:move_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{gravity_query}]]}}">
             <span data-i18n="help-or-hinder-title"></span>
           </button>
           <p class="move-description" data-i18n="help-or-hinder-description"></p>
         </div>
         <div class="move-weave-magic type-advent channeler-text">
-          <button type="roll" class="move-button" name="roll_weave_magic" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{channel}]]}}">
+          <button type="roll" class="move-button" name="roll_weave_magic" value="&{template:move_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{channel}]]}}">
             <span data-i18n="weave-magic-title"></span>
           </button>
           <p class="move-description" data-i18n="weave-magic-description"></p>
         </div>
         <div class="move-limit-break type-ascent ace-text">
-          <button type="roll" class="move-button" name="roll_limit_break" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{zeal}]]}}">
+          <button type="roll" class="move-button" name="roll_limit_break" value="&{template:move_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{zeal}]]}}">
             <span data-i18n="limit-break-title"></span>
           </button>
           <p class="move-description" data-i18n="limit-break-description"></p>
         </div>
         <div class="move-cool-off channeler-text">
-          <button type="roll" class="move-button" name="roll_cool_off" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{all_stats_query_ch}]]}}">
+          <button type="roll" class="move-button" name="roll_cool_off" value="&{template:move_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{all_stats_query_ch}]]}}">
             <span data-i18n="cool-off-title"></span>
           </button>
           <p class="move-description" data-i18n="cool-off-description"></p>
         </div>
         <div class="move-cool-off ace-text">
-          <button type="roll" class="move-button" name="roll_cool_off" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{all_stats_query_ace}]]}}">
+          <button type="roll" class="move-button" name="roll_cool_off" value="&{template:move_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{all_stats_query_ace}]]}}">
             <span data-i18n="cool-off-title"></span>
           </button>
           <p class="move-description" data-i18n="cool-off-description"></p>
         </div>
         <div class="move-cool-off support-text">
-          <button type="roll" class="move-button" name="roll_cool_off" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{all_stats_query_suprt}]]}}">
+          <button type="roll" class="move-button" name="roll_cool_off" value="&{template:move_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{all_stats_query_suprt}]]}}">
             <span data-i18n="cool-off-title"></span>
           </button>
           <p class="move-description" data-i18n="cool-off-description"></p>
         </div>
         <div class="move-exchange-blows">
-          <button type="roll" class="move-button" name="roll_exchange_blows" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{combat_stat_query}]]}}">
+          <button type="roll" class="move-button" name="roll_exchange_blows" value="&{template:move_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{combat_stat_query}]]}}">
             <span data-i18n="exchange-blows-title"></span>
           </button>
           <p class="move-description" data-i18n="exchange-blows-description"></p>
         </div>
         <div class="move-strike-decisively">
-          <button type="roll" class="move-button" name="roll_strike_decisively" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{combat_stat_query}]]}}">
+          <button type="roll" class="move-button" name="roll_strike_decisively" value="&{template:move_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{combat_stat_query}]]}}">
             <span data-i18n="strike-decisively-title"></span>
           </button>
           <p class="move-description" data-i18n="strike-decisively-description"></p>
         </div>
         <div class="move-bite-the-dust">
-          <button type="roll" class="move-button" name="roll_bite_the_dust" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{defy}]]}}">
+          <button type="roll" class="move-button" name="roll_bite_the_dust" value="&{template:move_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{defy}]]}}">
             <span data-i18n="bite-the-dust-title"></span>
           </button>
           <p class="move-description" data-i18n="bite-the-dust-description"></p>
         </div>
         <div class="move-lead-a-sortie">
-          <button type="roll" class="move-button" name="roll_lead_a_sortie" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{sortie_stat_query}]]}}">
+          <button type="roll" class="move-button" name="roll_lead_a_sortie" value="&{template:move_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{sortie_stat_query}]]}}">
             <span data-i18n="lead-a-sortie-title"></span>
           </button>
           <p class="move-description" data-i18n="lead-a-sortie-description"></p>
@@ -396,49 +411,49 @@
           <p class="move-description" data-i18n="overdrive-description"></p>
         </div>
         <div class="move-overhear">
-          <button type="roll" class="move-button" name="roll_overhear" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{overhear_stat_query}]]}}">
+          <button type="roll" class="move-button" name="roll_overhear" value="&{template:move_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{overhear_stat_query}]]}}">
             <span data-i18n="overhear-title"></span>
           </button>
           <p class="move-description" data-i18n="overhear-description"></p>
         </div>
         <div class="move-talk-it-out">
-          <button type="roll" class="move-button" name="roll_talk-it-out" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{talk}]]}}">
+          <button type="roll" class="move-button" name="roll_talk-it-out" value="&{template:move_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{talk}]]}}">
             <span data-i18n="talk-it-out-title"></span>
           </button>
           <p class="move-description" data-i18n="talk-it-out-description"></p>
         </div>
         <div class="move-mend-something">
-          <button type="roll" class="move-button" name="roll_mend-something" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{crew}]]}}">
+          <button type="roll" class="move-button" name="roll_mend-something" value="&{template:move_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{crew}]]}}">
             <span data-i18n="mend-something-title"></span>
           </button>
           <p class="move-description" data-i18n="mend-something-description"></p>
         </div>
         <div class="move-shore-leave">
-          <button type="roll" class="move-button" name="roll_shore-leave" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{talk}]]}}">
+          <button type="roll" class="move-button" name="roll_shore-leave" value="&{template:move_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{talk}]]}}">
             <span data-i18n="shore-leave-title"></span>
           </button>
           <p class="move-description" data-i18n="shore-leave-description"></p>
         </div>
         <div class="move-work-on-a-project channeler-text">
-          <button type="roll" class="move-button" name="roll_work-on-a-project" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{all_stats_query_ch}]]}}">
+          <button type="roll" class="move-button" name="roll_work-on-a-project" value="&{template:move_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{all_stats_query_ch}]]}}">
             <span data-i18n="work-on-a-project-title"></span>
           </button>
           <p class="move-description" data-i18n="work-on-a-project-description"></p>
         </div>
         <div class="move-work-on-a-project ace-text">
-          <button type="roll" class="move-button" name="roll_work-on-a-project" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{all_stats_query_ace}]]}}">
+          <button type="roll" class="move-button" name="roll_work-on-a-project" value="&{template:move_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{all_stats_query_ace}]]}}">
             <span data-i18n="work-on-a-project-title"></span>
           </button>
           <p class="move-description" data-i18n="work-on-a-project-description"></p>
         </div>
         <div class="move-work-on-a-project support-text">
-          <button type="roll" class="move-button" name="roll_work-on-a-project" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{all_stats_query_suprt}]]}}">
+          <button type="roll" class="move-button" name="roll_work-on-a-project" value="&{template:move_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{all_stats_query_suprt}]]}}">
             <span data-i18n="work-on-a-project-title"></span>
           </button>
           <p class="move-description" data-i18n="work-on-a-project-description"></p>
         </div>
         <div class="move-plan-and-prepare">
-          <button type="roll" class="move-button" name="roll_plan-and-prepare" value="&{template:move_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{know}]]}}">
+          <button type="roll" class="move-button" name="roll_plan-and-prepare" value="&{template:move_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{mv_roll=[[@{rolltype}+@{know}]]}}">
             <span data-i18n="plan-and-prepare-title"></span>
           </button>
           <p class="move-description" data-i18n="plan-and-prepare-description"></p>
@@ -463,7 +478,7 @@
             <div class="movedesc">
               <textarea class="auto-expand move-description" name="attr_mv_description" placeholder="Move description here..."></textarea>
             </div>
-            <button type="roll" class="move-button" name="roll_display-move" value="&{template:move_description_rolls} {{custmove='true'}} {{charname=@{name}}} {{mv_name=@{mv_name}}} {{mv_description=@{mv_description}}}">
+            <button type="roll" class="move-button" name="roll_display-move" value="&{template:move_description_rolls} {{custmove='true'}} {{charname=@{character_name}}} {{mv_name=@{mv_name}}} {{mv_description=@{mv_description}}}">
               <span data-i18n="move-display-button-label"></span>
             </button>
           </div>
@@ -476,19 +491,24 @@
     <input class="playbook-selection" type="hidden" name="attr_playbook-dropdown" value=""/>
     <span class="section-title type-advent channeler-text" data-i18n="astir-section-title"></span>
     <span class="section-title type-ascent ace-text" data-i18n="astir-section-title"></span>
-    <div class="astir-card channeler-text type-advent">
+    <div class="astir-card pilot-text">
+      <input class="game_type" type="hidden" name="attr_game_type" value="advent"/>
       <div class="astir-name-tier-box astir-box">
         <div><input type="text" name="attr_astir_name" class="astir-name-input upcase" data-i18n-placeholder="astir-name"/></div>
         <input type="text" name="attr_astir_tier" class="astir-tier-input upcase"/>
       </div>
       <div class="astir-approach"><input type="text" name="attr_astir_approach" class="astir-approach-input upcase" data-i18n-placeholder="astir-approach"/></div>
-      <div class="astir-core astir-box">
-        <div class="astir-core-label-box"><span class="astir-core-label upcase" data-i18n="astir-core"></span></div>
-        <div class="astir-core-input-box"><input type="text" class="astir-core-input upcase" name="attr_astir_core"/></div>
+      <div class="astir-core-generator astir-box">
+        <div class="astir-core-label-box type-advent"><span class="astir-core-label upcase" data-i18n="astir-core"></span></div>
+        <div class="astir-generator-label-box type-ascent"><span class="astir-generator-label upcase" data-i18n="astir-generator"></span></div>
+        <div class="astir-core-input-box type-advent"><input type="text" class="astir-core-input upcase" name="attr_astir_core"/></div>
+        <div class="astir-generator-input-box type-ascent"><input type="text" class="astir-generator-input upcase" name="attr_astir_generator"/></div>
       </div>
-      <div class="astir-mana astir-box">
-        <div class="astir-mana-label-box"><span class="astir-mana-label upcase" data-i18n="astir-mana"></span></div>
-        <div class="astir-mana-input-box"><input type="number" name="attr_astir_mana" class="astir-mana-input" min="0" max="10" value="0"/></div>
+      <div class="astir-mana-reserve astir-box">
+        <div class="astir-mana-label-box type-advent"><span class="astir-mana-label upcase" data-i18n="astir-mana"></span></div>
+        <div class="astir-reserve-label-box type-ascent"><span class="astir-reserve-label upcase" data-i18n="astir-reserve"></span></div>
+        <div class="astir-mana-input-box type-advent"><input type="number" name="attr_astir_mana" class="astir-mana-input" min="0" max="10" value="0"/></div>
+        <div class="astir-ascent-input-box type-ascent"><input type="number" name="attr_astir_reserve" class="astir-reserve-input" min="0" max="10" value="0"/></div>
       </div>
       <div class="astir-overheating astir-box">
         <span class="astir-overheating-label upcase" data-i18n="astir-overheating"></span>
@@ -503,87 +523,18 @@
         <div class="astir-part-description-box"><textarea class="astir-part-description" name="attr_astir_partb_description" data-i18n-placeholder="astir-part-description"></textarea></div>
       </div>
       <div class="astir-description astir-box"><textarea class="astir-description-input" name="attr_astir_description" data-i18n-placeholder="astir-description"></textarea></div>
-      <div class="astir-special-move-advent astir-box">
-        <div class="astir-special-move-label-box"><input type="text" name="attr_astir_mv_name" class="astir-special-move-label upcase" data-i18n-placeholder="astir-special-move"/></div>
-        <div class="astir-special-move-roll-button-box">
-          <input type="checkbox" name="attr_edit_move_label" class="edit-move-label" checked="true"/>
-          <span class="edit-move-label-text" data-i18n="edit"></span>
-          <button type="roll" name="roll_astir_special_move" class="astir-special-move-button" value="&{template:move_description_rolls} {{custmove='true'}} {{charname=@{name}}} {{mv_name=@{astir_mv_name}}} {{mv_description=@{astir_mv_description}}}"></button>
-        </div>
-        <div class="astir-special-move-description-box-advent"><textarea class="astir-special-move-description" name="attr_astir_mv_description" data-i18n-placeholder="astir-special-move-description"></textarea></div>
-      </div>
-      <div class="astir-mounted-carried-sheathed-advent astir-box">
-        <div class="astir-mounted-carried-sheathed-select-box">
-          <select class="astir-mounted-carried-sheathed-select upcase" name="attr_mounted_carried_sheathed_select1" value="mounted">
-            <option value="mounted" data-i18n="astir-mounted"></option>
-            <option value="carried" data-i18n="astir-carried"></option>
-            <option value="sheathed" data-i18n="astir-sheathed"></option>
-          </select>
-        </div>
-        <div class="astir-weapon-input-box-advent"><input type="text" name="attr_astir_weapon1" class="astir-weapon-input"/></div></div>
-      <div class="astir-mounted-carried-sheathed-advent astir-box">
-        <div class="astir-mounted-carried-sheathed-select-box">
-          <select class="astir-mounted-carried-sheathed-select upcase" name="attr_mounted_carried_sheathed_select2" value="mounted">
-            <option value="mounted" data-i18n="astir-mounted"></option>
-            <option value="carried" data-i18n="astir-carried"></option>
-            <option value="sheathed" data-i18n="astir-sheathed"></option>
-          </select>
-        </div>
-        <div class="astir-weapon-input-box-advent"><input type="text" name="attr_astir_weapon2" class="astir-weapon-input"/></div></div>
-      <div class="astir-mounted-carried-sheathed-advent astir-box">
-        <div class="astir-mounted-carried-sheathed-select-box">
-          <select class="astir-mounted-carried-sheathed-select upcase" name="attr_mounted_carried_sheathed_select3" value="mounted">
-            <option value="mounted" data-i18n="astir-mounted"></option>
-            <option value="carried" data-i18n="astir-carried"></option>
-            <option value="sheathed" data-i18n="astir-sheathed"></option>
-          </select>
-        </div>
-        <div class="astir-weapon-input-box-advent"><input type="text" name="attr_astir_weapon3" class="astir-weapon-input"/></div></div>
-    </div>
-    <div class="astir-card ace-text type-ascent">
-      <div class="astir-name-tier-box astir-box">
-        <div class="astir-name-input-box"><input type="text" name="attr_astir_name" class="astir-name-input upcase" data-i18n-placeholder="astir-name"/></div>
-        <div class="astir-tier-input-box"><input type="text" name="attr_astir_tier" class="astir-tier-input upcase" data-i18n-placeholder="astir-tier"/></div>
-      </div>
-      <div class="astir-approach"><input type="text" name="attr_astir_approach" class="astir-approach-input upcase" data-i18n-placeholder="astir-approach"/></div>
-      <div class="astir-generator astir-box"><input type="text" name="attr_astir_generator" class="astir-generator-input upcase" data-i18n-placeholder="astir-generator"/></div>
-      <div class="astir-drive astir-box">
-        <div class="astir-drive-label-box"><span class="astir-drive-label upcase" data-i18n="astir-drive"></span></div>
-        <div class="astir-drive-input-box"><input type="number" name="attr_astir_drive" class="astir-drive-input" min="0" max="10" value="0"/></div>
-      </div>
-      <div class="astir-reserve astir-box">
-        <div class="astir-reserve-label-box"><span class="astir-reserve-label upcase" data-i18n="astir-reserve"></span></div>
-        <div class="astir-reserve-input-box"><input type="number" name="attr_astir_reserve" class="astir-reserve-input" min="0" max="10" value="0"/></div>
-      </div>
-      <div class="astir-overheating astir-box">
-        <span class="astir-overheating-label upcase" data-i18n="astir-overheating"></span>
-        <input type="checkbox" name="attr_astir_overheating" class="astir-overheating-checkbox upcase"/>
-      </div>
-      <div class="astir-frame astir-box">
-        <div class="astir-part-label-box"><input type="text" class="astir-part-label upcase" name="attr_astir_frame_label" data-i18n-placeholder="astir-frame"/></div>
-        <div class="astir-part-description-box"><textarea type="text" class="astir-part-description" name="attr_astir_frame_description" data-i18n-placeholder="astir-part-description"></textarea></div>
-      </div>
-      <div class="astir-system astir-box">
-        <div class="astir-part-label-box"><input type="text" class="astir-part-label upcase" name="attr_astir_system_label" data-i18n-placeholder="astir-system"/></div>
-        <div class="astir-part-description-box"><textarea type="text" class="astir-part-description" name="attr_astir_system_description" data-i18n-placeholder="astir-part-description"></textarea></div>
-      </div>
-      <div class="astir-description astir-box"><textarea class="astir-description-input" name="attr_astir_description" data-i18n-placeholder="astir-description"></textarea></div>
-      <div class="astir-special-move-ascent astir-box">
+      <div class="astir-special-move astir-box">
         <div class="astir-special-move-label-box"><input type="text" name="attr_astir_mv_name" class="astir-special-move-label upcase" data-i18n-placeholder="astir-special-move"/></div>
         <input type="checkbox" name="attr_edit_move_label" class="edit-move-label" checked="true"/>
         <span class="edit-move-label-text upcase" data-i18n="edit"></span>
         <span class="roll-move-label-text upcase" data-i18n="roll"></span>
         <div class="astir-special-move-roll-button-box">
-          <button type="roll" name="roll_astir_special_move" class="astir-special-move-button" value="&{template:move_description_rolls} {{custmove='true'}} {{charname=@{name}}} {{mv_name=@{astir_mv_name}}} {{mv_description=@{astir_mv_description}}}">
+          <button type="roll" name="roll_astir_special_move" class="astir-special-move-button" value="&{template:move_description_rolls} {{custmove='true'}} {{charname=@{character_name}}} {{mv_name=@{astir_mv_name}}} {{mv_description=@{astir_mv_description}}}">
           </button>
         </div>
         <div class="astir-special-move-description-box-ascent"><textarea class="astir-special-move-description" name="attr_astir_mv_description" data-i18n-placeholder="astir-special-move-description"></textarea></div>
       </div>
-      <div class="astir-mod astir-box">
-        <div class="astir-mod-label-box"><input type="text" name="attr_astir_mod_label" class="astir-mod-label upcase" data-i18n-placeholder="astir-mod"/></div>
-        <div class="astir-mod-description-box"><textarea name="attr_astir_mod_description" class="astir-mod-description" data-i18n-placeholder="astir-mod-description"></textarea></div>
-      </div>
-      <div class="astir-mounted-carried-sheathed-ascent astir-box">
+      <div class="astir-mounted-carried-sheathed astir-box">
         <div class="astir-mounted-carried-sheathed-select-box">
           <select class="astir-mounted-carried-sheathed-select upcase" name="attr_mounted_carried_sheathed_select1" value="mounted">
             <option value="mounted" data-i18n="astir-mounted"></option>
@@ -591,9 +542,8 @@
             <option value="sheathed" data-i18n="astir-sheathed"></option>
           </select>
         </div>
-        <div class="astir-weapon-input-box-ascent"><input type="text" name="attr_astir_weapon1" class="astir-weapon-input"/></div>
-      </div>
-      <div class="astir-mounted-carried-sheathed-ascent astir-box">
+        <div class="astir-weapon-input-box"><input type="text" name="attr_astir_weapon1" class="astir-weapon-input"/></div></div>
+      <div class="astir-mounted-carried-sheathed astir-box">
         <div class="astir-mounted-carried-sheathed-select-box">
           <select class="astir-mounted-carried-sheathed-select upcase" name="attr_mounted_carried_sheathed_select2" value="mounted">
             <option value="mounted" data-i18n="astir-mounted"></option>
@@ -601,9 +551,8 @@
             <option value="sheathed" data-i18n="astir-sheathed"></option>
           </select>
         </div>
-        <div class="astir-weapon-input-box-ascent"><input type="text" name="attr_astir_weapon2" class="astir-weapon-input"/></div>
-      </div>
-      <div class="astir-mounted-carried-sheathed-ascent astir-box">
+        <div class="astir-weapon-input-box"><input type="text" name="attr_astir_weapon2" class="astir-weapon-input"/></div></div>
+      <div class="astir-mounted-carried-sheathed astir-box">
         <div class="astir-mounted-carried-sheathed-select-box">
           <select class="astir-mounted-carried-sheathed-select upcase" name="attr_mounted_carried_sheathed_select3" value="mounted">
             <option value="mounted" data-i18n="astir-mounted"></option>
@@ -611,7 +560,7 @@
             <option value="sheathed" data-i18n="astir-sheathed"></option>
           </select>
         </div>
-        <div class="astir-weapon-input-box-ascent"><input type="text" name="attr_astir_weapon3" class="astir-weapon-input"/></div>
+        <div class="astir-weapon-input-box"><input type="text" name="attr_astir_weapon3" class="astir-weapon-input"/></div>
       </div>
     </div>
   </div>
@@ -677,7 +626,7 @@
             <div class="clock-button-row flex">
               <div class="stat-block gravity-stat-block">
                 <input type="number" name="attr_gravity" class="stats" min="0" max="3" value="0"/>
-                <button type="roll" class="stat-button" name="roll_gravity" value="&{template:stat_rolls} {{charname=@{name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{gravity}]]}}">
+                <button type="roll" class="stat-button" name="roll_gravity" value="&{template:stat_rolls} {{charname=@{character_name}}} {{effect=@{effect_query}}} {{stat_roll=[[@{rolltype}+@{gravity}]]}}">
                   <span data-i18n="gravity"></span>
                 </button>
               </div>

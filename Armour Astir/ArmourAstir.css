@@ -234,12 +234,15 @@ input[type="radio"]:checked+label {
 .sheet-playbook-selection:not([value$="witch"]) ~ .sheet-witch-text,
 .sheet-playbook-selection:not([value$="leashed"]) ~ .sheet-leashed-text,
 .sheet-playbook-selection:not([value|="support"]) ~ .sheet-support-text,
+.sheet-playbook-selection[value|="support"] ~ .sheet-pilot-text,
 .sheet-playbook-selection:not([value$="scout"]) ~ .sheet-scout-text,
 .sheet-playbook-selection:not([value$="captain"]) ~ .sheet-captain-text,
 .sheet-playbook-selection:not([value$="artificer"]) ~ .sheet-artificer-text,
 .sheet-playbook-selection:not([value$="engineer"]) ~ .sheet-engineer-text,
 .sheet-playbook-selection:not([value$="diplomat"]) ~ .sheet-diplomat-text,
-.sheet-playbook-selection:not([value$="custom"]) ~ .sheet-custom-text {
+.sheet-playbook-selection:not([value$="custom"]) ~ .sheet-custom-text,
+.sheet-playbook-selection[value$="paradigm"] ~ .sheet-ideal-normal,
+.sheet-playbook-selection[value$="haunted"] ~ .sheet-ideal-normal {
   display: none;
 }
 
@@ -330,6 +333,8 @@ button[type=roll].sheet-stat-button:hover > span.sheet-stat-label {
 
 .sheet-style-label {
   min-width: 50%;
+  padding-top: 10px;
+  font-weight: bold;
 }
 
 .sheet-style-field {
@@ -341,10 +346,11 @@ button[type=roll].sheet-stat-button:hover > span.sheet-stat-label {
   width: 100%;
 }
 
-.sheet-style-custom-box {
+input.sheet-style-custom-box {
   border: none;
   padding: 0px;
   color: black;
+  font-weight: bold;
 }
 
 .sheet-gear-section, .sheet-danger-section {
@@ -599,6 +605,14 @@ input.sheet-risk, input.sheet-peril {
 
 .sheet-right-column {
     padding-left: 5px;
+}
+
+.sheet-col30 {
+  width: 30%;
+}
+
+.sheet-col70 {
+  width: 70%;
 }
 
 .sheet-col47 {
@@ -951,112 +965,62 @@ input.sheet-astir-approach-input {
   padding: 0px;
 }
 
-.sheet-astir-core {
+.sheet-astir-core-generator {
   grid-column: 13 / span 4;
   grid-row: 1 / span 2;
   display: grid;
   grid-template-rows: repeat(2, 1fr [row-start]);
 }
 
-.sheet-astir-core-label-box {
+.sheet-astir-core-label-box,
+.sheet-astir-generator-label-box {
   grid-row: 1;
   border-bottom: solid 2px;
   text-align: center;
 }
 
-.sheet-astir-core-label {
+.sheet-astir-core-label,
+.sheet-astir-generator-label {
   font-weight: bold;
 }
 
-.sheet-astir-core-input-box {
+.sheet-astir-core-input-box,
+.sheet-astir-generator-input-box {
   grid-row: 2;
 }
 
-input.sheet-astir-core-input {
-  text-align: center;
-  border: none;
-  width: 100%;
-  padding: 0px;
-}
-
-.sheet-astir-generator {
-  grid-column: 13 / span 4;
-  grid-row: 1;
-}
-
+input.sheet-astir-core-input,
 input.sheet-astir-generator-input {
-  height: 100%;
-  width: 100%;
   text-align: center;
   border: none;
-  font-weight: bold;
+  width: 100%;
   padding: 0px;
 }
 
-.sheet-astir-mana,
-.sheet-astir-drive {
+.sheet-astir-mana-reserve {
   grid-column: 17 / span 4;
   grid-row: 1;
   display: grid;
   grid-template-columns: repeat(2, 1fr [col-start]);
 }
 
-.sheet-astir-mana-label-box {
-  grid-column: 1;
-  text-align: center;
-  border-right: solid 2px;
-  font-weight: bold;
-}
-
-.sheet-astir-mana-input-box {
-  grid-column: 2;
-  text-align: center;
-}
-
-input.sheet-astir-mana-input {
-  height: 85%;
-}
-
-.sheet-astir-drive-label-box {
-  border-right: solid 2px;
-  grid-column: 1;
-  text-align: center;
-  font-weight: bold;
-}
-
-.sheet-astir-drive-input-box {
-  grid-column: 2;
-  text-align: center;
-}
-
-input.sheet-astir-drive-input {
-  border: none;
-  padding: 0px;
-  margin: 0px;
-  height: 90%;
-}
-
-.sheet-astir-reserve {
-  grid-column: 13 / span 4;
-  grid-row: 2;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr [col-start]);
-}
-
+.sheet-astir-mana-label-box,
 .sheet-astir-reserve-label-box {
-  grid-column: 1 / span 3;
-  border-right: solid 2px;
+  grid-column: 1;
   text-align: center;
+  border-right: solid 2px;
   font-weight: bold;
 }
 
+.sheet-astir-mana-input-box,
 .sheet-astir-reserve-input-box {
-  grid-column: 4;
-  height: 90%;
+  grid-column: 2;
+  text-align: center;
 }
 
+input.sheet-astir-mana-input,
 input.sheet-astir-reserve-input {
-  height: 90%;
+  height: 85%;
 }
 
 .sheet-astir-overheating {
@@ -1070,8 +1034,7 @@ input[type=checkbox].sheet-astir-overheating-checkbox {
   opacity: 1;
 }
 
-.sheet-astir-parta,
-.sheet-astir-frame {
+.sheet-astir-parta {
   grid-column: 1 / span 10;
   grid-row: 3 / span 3;
   display: grid;
@@ -1079,8 +1042,7 @@ input[type=checkbox].sheet-astir-overheating-checkbox {
   text-align: center;
 }
 
-.sheet-astir-partb,
-.sheet-astir-system {
+.sheet-astir-partb {
   grid-column: 11 / span 10;
   grid-row: 3 / span 3;
   display: grid;
@@ -1130,7 +1092,7 @@ textarea.sheet-astir-description-input {
   padding-bottom: 0px;
 }
 
-.sheet-astir-special-move-advent {
+.sheet-astir-special-move {
   grid-column: 16 / span 5;
   grid-row: 6 / span 6;
   display: grid;
@@ -1217,7 +1179,7 @@ button[type=roll].sheet-astir-special-move-button {
   background-color: black;
 }
 
-.sheet-astir-special-move-description-box-advent {
+.sheet-astir-special-move-description-box {
   grid-column: 1;
   grid-row: 2 / span 5;
 }
@@ -1230,53 +1192,7 @@ textarea.sheet-astir-special-move-description {
   padding-bottom: 0px;
 }
 
-.sheet-astir-special-move-ascent {
-  grid-column: 16 / span 5;
-  grid-row: 6 / span 5;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(5, 1fr [row-start]);
-}
-
-.sheet-astir-special-move-description-box-ascent {
-  grid-column: 1;
-  grid-row: 2 / span 4;
-}
-
-.sheet-astir-mod {
-  grid-column: 16 / span 5;
-  grid-row: 11 / span 4;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(4, 1fr [row-start]);
-}
-
-.sheet-astir-mod-label-box {
-  grid-row: 1;
-  border-bottom: solid 2px;
-}
-
-input.sheet-astir-mod-label {
-  font-weight: bold;
-  border: none;
-  text-align: center;
-  padding: 0px;
-}
-
-.sheet-astir-mod-description-box {
-  grid-row: 2 / span 3;
-}
-
-textarea.sheet-astir-mod-description {
-  width: 100%;
-  height: 100%;
-  border: none;
-  resize: none;
-  padding-top: 0px;
-  padding-bottom: 0px;
-}
-
-.sheet-astir-mounted-carried-sheathed-advent {
+.sheet-astir-mounted-carried-sheathed {
   grid-column: 1 / span 20;
   display: grid;
   grid-template-columns: repeat(20, 1fr [col-start]);
@@ -1296,12 +1212,8 @@ select.sheet-astir-mounted-carried-sheathed-select {
   text-align: center;
 }
 
-.sheet-astir-weapon-input-box-advent {
+.sheet-astir-weapon-input-box {
   grid-column: 5 / span 16;
-}
-
-.sheet-astir-weapon-input-box-ascent {
-  grid-column: 5 / span 11;
 }
 
 input.sheet-astir-weapon-input {
@@ -1311,12 +1223,6 @@ input.sheet-astir-weapon-input {
   padding: 0px;
   border: none;
   text-align: center;
-}
-
-.sheet-astir-mounted-carried-sheathed-ascent {
-  grid-column: 1 / span 15;
-  display: grid;
-  grid-template-columns: repeat(15, 1fr [col-start]);
 }
 
 /* CLOCKS */
